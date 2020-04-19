@@ -4,14 +4,20 @@ const { db } = require('../utilities/admin');
 // post in dataSets in user devices
 exports.postInDataSetsUserDevice = (req, res) => {
     let dataSetModel;
+    let dataSetId;
     db
         .doc(`/userDevices/${req.params.userDeviceId}`)
         .get()
         .then((doc) => {
             dataSetModel = doc.data().device.dataSets;
+            dataSetId = doc.id;
         })
         .then(() => {
-            dataSetModel = {...req.body, createdAt: new Date().toISOString()};
+            let dataSetModel = {
+                ...req.body, 
+                createdAt: new Date().toISOString(), 
+                dataSetId: dataSetId
+            };  
             return db
                 .doc(`/userDevices/${req.params.userDeviceId}`)
                 .collection('dataSets')
@@ -33,7 +39,7 @@ exports.postInDataSetsUserDevice = (req, res) => {
 // get all dataSets in user device 
 exports.getAllDataSetsUserDevice = (req, res) => {
     db
-        .doc(`/userDevices/${req.params.userDevicesId}`)
+        .doc(`/userDevices/${req.params.userDeviceId}`)
         .collection('dataSets')
         .get()
         .then((data) => {
@@ -41,27 +47,7 @@ exports.getAllDataSetsUserDevice = (req, res) => {
             data.forEach((doc) => {
                 dataSets.push({
                     dataSetId: doc.id,
-                    on: doc.data().on,
-                    connected: doc.data().connected,
-                    createdAt: new Date().toISOString(),
-                    tail: {
-                        proximity: doc.data().tail.proximity,
-                        temperature: doc.data().tail.temperature,
-                        pressure: doc.data().tail.pressure,
-                        motion: doc.data().tail.motion,
-                        position: {
-                            x: doc.data().tail.position.x,
-                            y: doc.data().tail.position.y,
-                            z: doc.data().tail.position.z
-                        }
-                    },
-                    midi: {
-                        color: doc.data().midi.color,
-                        speakers: doc.data().midi.speakers,
-                        mic: doc.data().midi.mic,
-                        lights: doc.data().midi.lights,
-                        vibration: doc.data().midi.vibration
-                    }
+                    ...doc.data()
                 });
             });
             return res.json(dataSets);

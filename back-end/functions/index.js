@@ -103,9 +103,9 @@ app.get('/useradventures/:userAdventuresId/active', FBAuth, getActiveUserAdventu
 app.get('/useradventures/:userAdventuresId/inactive', FBAuth, getInactiveUserAdventures);
 
 ////////////////////////////////////////////////// DATASETS/////////////////////////////////////////////////////////
-// post dataSets in user device
+// post dataSets in user device 
 app.post('/user/device/:userDeviceId/dataset', FBAuth, postInDataSetsUserDevice);
-// get all dataSets in user device 
+// get all dataSets in user device
 app.get('/user/device/:userDeviceId/datasets', FBAuth, getAllDataSetsUserDevice);
 // get one dataSets in user device ------- checkkkkkkk
 app.get('/user/device/:userDeviceId/dataset/:dataSetId', FBAuth, getDataSetUserDevice);
