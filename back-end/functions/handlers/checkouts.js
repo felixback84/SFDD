@@ -3,44 +3,19 @@ const { db } = require('../utilities/admin');
 
 // get all checkouts
 exports.getAllCheckouts = (req, res) => {
-    let checkoutsData = {};
+    
     db
         .collection('checkouts')
         .where('userHandle', '==', req.user.userHandle)
-        .where('type', '==', 'device')
         .get()
-        .then((data)=> {
+        .then((data) => {
+            let checkoutsData = [];
             data.forEach((doc) => {
-                checkoutsData.devices.push({
+                checkoutsData.push({
                     checkoutId: doc.id,
-                    state: doc.data().state,
-                    type: 'device',
-                    userHandle: doc.data().userHandle,
-                    address: doc.data().address,
-                    user: doc.data().user,
-                    device: doc.data().device
+                    ...doc.data()
                 });
             });
-        })
-    db
-        .collection('checkouts')
-        .where('userHandle', '==', req.user.userHandle)
-        .where('type', '==', 'adventure')
-        .get()
-        .then((data)=> {
-            data.forEach((doc) => {
-                checkoutsData.adventures.push({
-                    checkoutId: doc.id,
-                    state: doc.data().state,
-                    type: 'adventure',
-                    userHandle: doc.data().userHandle,
-                    address: doc.data().address,
-                    user: doc.data().user,
-                    adventure: doc.data().adventure
-                });
-            });
-        })    
-        .then(() => {
             return res.json(checkoutsData);
         })
         .catch((err) => {
@@ -51,7 +26,7 @@ exports.getAllCheckouts = (req, res) => {
 
 // get a specific checkout
 exports.getCheckout = (req, res) => {
-    let checkoutData = {};
+    let checkoutData;
     db
         .doc(`/checkouts/${req.params.checkoutId}`)
         .get()

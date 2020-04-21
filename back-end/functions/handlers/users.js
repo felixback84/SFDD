@@ -181,45 +181,15 @@ exports.getAuthenticatedUser = (req, res) => {
             if (doc.exists) {
             userData.credentials = doc.data();
             return db
-                .collection('userDevices')
-                .where('userHandle', '==', req.user.userHandle)
-                .get();
-            }
-        }) 
-        .then((data) => {
-            userData.userDevices = [];
-            data.forEach((doc) => {
-                userData.userDevices.push(doc.data());
-            });
-            return db
-                .collection('userAdventures')
-                .where('userHandle', '==', req.user.userHandle)
-                .get()
-        })
-        .then((data) => {
-            userData.userAdventures = [];
-            data.forEach((doc) => {
-                userData.userAdventures.push(doc.data());
-            });
-            return db
                 .collection('likes')
                 .where('userHandle', '==', req.user.userHandle)
                 .get()
-        })
+            }
+        }) 
         .then((data) => {
             userData.likes = [];
             data.forEach((doc) => {
                 userData.likes.push(doc.data());
-            });
-            return db
-                .collection('checkouts')
-                .where('userHandle', '==', req.user.userHandle)
-                .get()
-        })
-        .then((data) => {
-            userData.checkouts = [];
-            data.forEach((doc) => {
-                userData.checkouts.push(doc.data());
             });
             return db
                 .collection('activeUserDevices')
@@ -227,7 +197,7 @@ exports.getAuthenticatedUser = (req, res) => {
                 .get()
         })
         .then((data) => {
-            userData.activeUserDevices;
+            userData.activeUserDevices = [];
             data.forEach((doc) => {
                 userData.activeUserDevices.push(doc.data());
             });
@@ -237,7 +207,7 @@ exports.getAuthenticatedUser = (req, res) => {
                 .get()
         })
         .then((data) => {
-            userData.activeUserAdventures;
+            userData.activeUserAdventures = [];
             data.forEach((doc) => {
                 userData.activeUserAdventures.push(doc.data());
             });

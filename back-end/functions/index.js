@@ -112,13 +112,13 @@ app.get('/user/device/:userDeviceId/dataset/:dataSetId', FBAuth, getDataSetUserD
 
 ////////////////////////////////////////////////// CHECKOUTS ////////////////////////////////////////////////////////
 // post data for checkout device
-app.post('/user/checkout/device/:deviceId',FBAuth, postDataCheckOutDevice);
+app.post('/user/checkout/device/:deviceId', FBAuth, postDataCheckOutDevice);
 // post data for checkout adventure
-app.post('/user/checkout/adventure/:adventureId',FBAuth, postDataCheckOutAdventure);
+app.post('/user/checkout/adventure/:adventureId', FBAuth, postDataCheckOutAdventure);
 // get all checkouts
-app.get('/checkouts', FBAuth, getAllCheckouts);
-// get one checkouts
-app.get('/checkouts/:checkoutId', FBAuth, getCheckout);
+app.get('/user/checkouts', FBAuth, getAllCheckouts);
+// get one checkout
+app.get('/user/checkouts/:checkoutId', FBAuth, getCheckout);
 
 ////////////////////////////////////////////////// DEVICES ////////////////////////////////////////////////////////
 // get all devices

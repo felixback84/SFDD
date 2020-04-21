@@ -8,7 +8,7 @@ import {
     GET_INACTIVE_USER_DEVICES,
     GET_ACTIVE_USER_ADVENTURES,
     GET_INACTIVE_USER_ADVENTURES,
-    GET_LIKE_DEVICES,
+    GET_LIKE_DEVICES, 
     GET_UNLIKE_DEVICES,
     GET_LIKE_ADVENTURES,
     GET_UNLIKE_ADVENTURES
@@ -18,7 +18,7 @@ import {
 const initialState = {
     authenticated: false,
     loading: false,
-    credentials: {},
+    credentials: {}, 
     activeUserDevices: [],
     activeUserAdventures: [],
     likes: []
