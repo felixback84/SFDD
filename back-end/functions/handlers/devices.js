@@ -13,6 +13,7 @@ exports.getAllDevices = (req,res) => {
                 devices.push({
                     deviceId: doc.id,
                     nameOfDevice: doc.data().nameOfDevice,
+                    description: doc.data().description,
                     imgUrl: doc.data().imgUrl,
                     videoUrl: doc.data().vieoUrl,
                     badgeUrl: doc.data().badgeUrl,

@@ -52,11 +52,11 @@ exports.getActiveUserAdventures = (req, res) => {
     const activeUserAdventureDocument = db
         .collection('activeUserAdventures')
         .where('userHandle', '==', req.user.userHandle)
-        .where('userAdventuresId', '==', req.params.userAdventuresId)
+        .where('userAdventuresId', '==', req.params.userAdventureId)
         .limit(1);
 
     // ask for device
-    const userAdventureDocument = db.doc(`/userAdventures/${req.params.userAdventuresId}`); 
+    const userAdventureDocument = db.doc(`/userAdventures/${req.params.userAdventureId}`); 
     // global var to hold all data
     let userAdventureData;
     // ask if exists this device
@@ -65,7 +65,7 @@ exports.getActiveUserAdventures = (req, res) => {
         .then((doc) => {
             if (doc.exists) {
                 userAdventureData = doc.data();
-                userAdventureData.userAdventuresId = doc.id;
+                userAdventureData.userAdventureId = doc.id;
                 return activeUserAdventureDocument.get();
             } else {
                 return res.status(404).json({ error: 'useAdventure not found' });
@@ -79,7 +79,7 @@ exports.getActiveUserAdventures = (req, res) => {
                     // add data to it
                     .collection('activeUserAdventures')
                     .add({
-                        userAdventuresId: req.params.userAdventuresId,
+                        userAdventureId: req.params.userAdventureId,
                         userHandle: req.user.userHandle
                     })
                     .then(() => {
@@ -88,7 +88,7 @@ exports.getActiveUserAdventures = (req, res) => {
                     .then(() => {
                         //console.log(res);
                         console.log(userAdventureData);
-                        return res.json(useradventureData);
+                        return res.json(userAdventureData);
                     
                     });
             } else {
@@ -106,10 +106,10 @@ exports.getInactiveUserAdventures = (req, res) => {
     const activeUserAdventureDocument = db
             .collection('activeUserAdventures')
             .where('userHandle', '==', req.user.userHandle)
-            .where('userAdventuresId', '==', req.params.userAdventuresId)
+            .where('userAdventuresId', '==', req.params.userAdventureId)
             .limit(1);
 
-    const userAdventuresDocument = db.doc(`/userAdventures/${req.params.userAdventuresId}`);
+    const userAdventuresDocument = db.doc(`/userAdventures/${req.params.userAdventureId}`);
     let userAdventuresData;
     
     userAdventuresDocument
@@ -117,7 +117,7 @@ exports.getInactiveUserAdventures = (req, res) => {
         .then((doc) => {
             if (doc.exists) {
                 userAdventuresData = doc.data();
-                userAdventuresData.userAdventuresId = doc.id;
+                userAdventuresData.userAdventureId = doc.id;
                 return activeUserAdventureDocument.get();
             } else {
                 return res.status(404).json({ error: 'userAdventure not found' });

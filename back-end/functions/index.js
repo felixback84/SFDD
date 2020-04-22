@@ -88,9 +88,9 @@ app.get('/userdevices', FBAuth, getAllUserDevices);
 // get one userDevice 
 app.get('/userdevices/:userDeviceId', FBAuth, getUserDevice);
 // get active userDevices
-app.get('/userdevices/:userDevicesId/active', FBAuth, getActiveUserDevices);
+app.get('/userdevices/:userDeviceId/active', FBAuth, getActiveUserDevices);
 // get inactive userAdventures
-app.get('/userdevices/:userDevicesId/inactive', FBAuth, getInactiveUserDevices);
+app.get('/userdevices/:userDeviceId/inactive', FBAuth, getInactiveUserDevices);
 
 ////////////////////////////////////////////////// USERADVENTURES /////////////////////////////////////////////////////
 // get userDevice 
@@ -98,16 +98,16 @@ app.get('/useradventures', FBAuth, getAllUserAdventures);
 // get one userAdventure 
 app.get('/useradventures/:userAdventureId', FBAuth, getUserAdventure);
 // get active userAdventures
-app.get('/useradventures/:userAdventuresId/active', FBAuth, getActiveUserAdventures);
+app.get('/useradventures/:userAdventureId/active', FBAuth, getActiveUserAdventures);
 // get inactive userAdventures
-app.get('/useradventures/:userAdventuresId/inactive', FBAuth, getInactiveUserAdventures);
+app.get('/useradventures/:userAdventureId/inactive', FBAuth, getInactiveUserAdventures);
 
 ////////////////////////////////////////////////// DATASETS/////////////////////////////////////////////////////////
 // post dataSets in user device 
 app.post('/user/device/:userDeviceId/dataset', FBAuth, postInDataSetsUserDevice);
 // get all dataSets in user device
 app.get('/user/device/:userDeviceId/datasets', FBAuth, getAllDataSetsUserDevice);
-// get one dataSets in user device ------- checkkkkkkk
+// get one dataSets in user device 
 app.get('/user/device/:userDeviceId/dataset/:dataSetId', FBAuth, getDataSetUserDevice);
 
 ////////////////////////////////////////////////// CHECKOUTS ////////////////////////////////////////////////////////
@@ -189,6 +189,7 @@ exports.createUserPropertyAfterCheckout = functions.firestore
                             // now save the select info of .doc (device) of the collection
                             let selectInfoDevice = {
                                 nameOfDevice: doc.data().nameOfDevice,
+                                description: doc.data().description,
                                 imgUrl: doc.data().imgUrl,
                                 videoUrl: doc.data().videoUrl,
                                 badgeUrl: doc.data().badgeUrl,

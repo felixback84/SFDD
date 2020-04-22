@@ -52,11 +52,11 @@ exports.getActiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
         .collection('activeUserDevices')
         .where('userHandle', '==', req.user.userHandle)
-        .where('userDevicesId', '==', req.params.userDevicesId)
+        .where('userDevicesId', '==', req.params.userDeviceId)
         .limit(1);
 
     // ask for device
-    const userDeviceDocument = db.doc(`/userDevices/${req.params.userDevicesId}`); 
+    const userDeviceDocument = db.doc(`/userDevices/${req.params.userDeviceId}`); 
     // global var to hold all data
     let userDeviceData;
     // ask if exists this device
@@ -65,7 +65,7 @@ exports.getActiveUserDevices = (req, res) => {
         .then((doc) => {
             if (doc.exists) {
                 userDeviceData = doc.data();
-                userDeviceData.userDevicesId = doc.id;
+                userDeviceData.userDeviceId = doc.id;
                 return activeUserDeviceDocument.get();
             } else {
                 return res.status(404).json({ error: 'userDevice not found' });
@@ -79,7 +79,7 @@ exports.getActiveUserDevices = (req, res) => {
                     // add data to it
                     .collection('activeUserDevices')
                     .add({
-                        userDevicesId: req.params.userDevicesId,
+                        userDeviceId: req.params.userDeviceId,
                         userHandle: req.user.userHandle
                     })
                     .then(() => {
@@ -88,7 +88,7 @@ exports.getActiveUserDevices = (req, res) => {
                     // data in response to check in front if the likes exists
                     .then(() => {
                         //console.log(res);
-                        console.log(userDeviceData);
+                        //console.log(userDeviceData);
                         return res.json(userDeviceData);
                     
                     });
@@ -107,10 +107,10 @@ exports.getInactiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
             .collection('activeUserDevices')
             .where('userHandle', '==', req.user.userHandle)
-            .where('userDevicesId', '==', req.params.userDevicesId)
+            .where('userDevicesId', '==', req.params.userDeviceId)
             .limit(1);
 
-    const userDeviceDocument = db.doc(`/userDevices/${req.params.userDevicesId}`);
+    const userDeviceDocument = db.doc(`/userDevices/${req.params.userDeviceId}`);
     let userDeviceData;
     
     userDeviceDocument
@@ -118,7 +118,7 @@ exports.getInactiveUserDevices = (req, res) => {
         .then((doc) => {
             if (doc.exists) {
                 userDeviceData = doc.data();
-                userDeviceData.userDevicesId = doc.id;
+                userDeviceData.userDeviceId = doc.id;
                 return activeUserDeviceDocument.get();
             } else {
                 return res.status(404).json({ error: 'userDevice not found' });
