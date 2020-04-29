@@ -4,12 +4,16 @@ import {
     GET_USER_DEVICE
 } from '../types';
 
-
+// let userDevice;
 // initial state
 const initialState = {
-    loading: false,
     userDevices:[],
-    userDevice:{}
+    userDevice:{
+        device:{
+            dataSets:{}
+        }
+    },
+    loading: false
 }
 
 // function to determine the type of action to set state
@@ -19,20 +23,20 @@ export default function(state = initialState, action){
             return{
                 ...state,
                 loading: true
-            }
+            };
         case GET_USER_DEVICES:
             return {
                 ...state,
-                loading: false, 
-                userDevices: action.payload
-            }
+                userDevices: action.payload,
+                loading: false
+                
+            };
         case GET_USER_DEVICE:
             return {
                 ...state,
-                loading: false, 
-                userDevice: action.payload
-                
-            }
+                userDevice: action.payload,
+                loading: false
+            };
         default:
             return state; 
     }    

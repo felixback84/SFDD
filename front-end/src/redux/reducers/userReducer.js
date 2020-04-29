@@ -22,7 +22,7 @@ const initialState = {
     activeUserDevices: [],
     activeUserAdventures: [],
     likes: []
-};
+}; 
 
 // function to determine the type of action to set state
 export default function(state = initialState, action){

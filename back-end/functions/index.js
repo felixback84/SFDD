@@ -84,7 +84,7 @@ app.get('/user', FBAuth, getAuthenticatedUser);
 
 ////////////////////////////////////////////////// USERDEVICES ////////////////////////////////////////////////////////
 // get userDevice 
-app.get('/userdevices', FBAuth, getAllUserDevices);
+app.get('/userdevices', FBAuth, getAllUserDevices); 
 // get one userDevice 
 app.get('/userdevices/:userDeviceId', FBAuth, getUserDevice);
 // get active userDevices

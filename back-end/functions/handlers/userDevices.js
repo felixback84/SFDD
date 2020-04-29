@@ -3,7 +3,7 @@ const { db } = require('../utilities/admin');
 
 // get all userDevices
 exports.getAllUserDevices = (req, res) => {
-    let userDevices = {};
+    let userDevices = [];
     db
         .collection('userDevices')
         .where('userHandle', '==', req.user.userHandle)
@@ -29,7 +29,7 @@ exports.getAllUserDevices = (req, res) => {
 
 // get one userDevice
 exports.getUserDevice = (req, res) => {
-    let userDeviceData = {};
+    let userDeviceData;
     db
         .doc(`/userDevices/${req.params.userDeviceId}`)
         .get()

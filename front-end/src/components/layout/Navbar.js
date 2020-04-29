@@ -43,6 +43,15 @@ class Navbar extends Component {
     render() {
     //const classes = useStyles();
     const { classes, authenticated } = this.props;
+    // const { credentials } = this.props;
+    // console.log(credentials);
+    // const {
+    //     user: {
+    //         credentials: { createdAt, bio }
+    //     }
+    // } = this.props;
+    // console.log(bio);
+
     return(
         <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
@@ -91,7 +100,8 @@ Navbar.protoTypes = {
 }  
 
 const mapStateToProps = state => ({
-    authenticated: state.user.authenticated
+    authenticated: state.user.authenticated,
+    //user: state.user
 })
 
 export default connect(mapStateToProps)(withStyles(styles)(Navbar));

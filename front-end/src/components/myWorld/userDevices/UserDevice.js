@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
+
 // dayjs
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-
-// react player
-import ReactPlayer from "react-player"  
 
 // Proptypes
 import PropTypes from 'prop-types';
@@ -13,35 +11,33 @@ import PropTypes from 'prop-types';
 // Componets
 //import MyButton from '../../../utilities/MyButton';
 import UserDeviceDialog from './UserDeviceDialog';
+import VideoPlayer from '../../util/VideoPlayer';
 
 // MUI Stuff
-//import { makeStyles } from '@material-ui/core/styles';
 import withStyles from '@material-ui/core/styles/withStyles';
-//import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-//import MuiCardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-//import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
+
+// icons
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-// icons
-import ChatIcon from '@material-ui/icons/Chat';
-
 // styles
-const styles = () => ({
+const styles = (theme) => ({
         avatar: {
             backgroundColor: red[500],
         },
+        card: {
+            marginBottom: 20
+        }
 });
 
 export class UserDevice extends Component {
@@ -68,7 +64,7 @@ export class UserDevice extends Component {
         } = this.props;
 
         return (
-            <Card className={classes.root}>
+            <Card className={classes.card}>
                 <CardHeader
                     avatar={
                         <Avatar aria-label="recipe" className={classes.avatar}>
@@ -81,26 +77,25 @@ export class UserDevice extends Component {
                         </IconButton>
                     }
                     title={'Name of device: ' + nameOfDevice}
-                    subheader={'From ages to: ' + ageRate + userDeviceId}
+                    subheader={'From ages to: ' + ageRate}
                 />
-                <CardMedia className={classes.media}>
-                    <ReactPlayer
-                        url={videoUrl}
-                        height= '100%'
-                        width= '100%'
-                    />
-                </CardMedia>
+                {/* Video player */}
+                <VideoPlayer url={videoUrl} widht={100} />
+
                 <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                    <Typography variant="body2" color="textSecondary" component="p">
                         {'Mine since: ' + dayjs(createdAt).format('h:mm a, MMMM DD YYYY')}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {`Available adventures for ${nameOfDevice} device: ${howManyAdventures}`}
                     </Typography>
+                    <hr className={classes.visibleSeparator}/>
                     <Typography variant="body2" color="textSecondary" component="p">
                         {`Why ${nameOfDevice} is awesome?: ${description}`}
                     </Typography>
+                    <UserDeviceDialog userDeviceId={userDeviceId} />
                 </CardContent>
+
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
                         <FavoriteIcon />
@@ -109,22 +104,21 @@ export class UserDevice extends Component {
                         <ShareIcon />
                     </IconButton>
                     <IconButton
-                    aria-label="show more"
+                        aria-label="show more"
                     >
                         <ExpandMoreIcon />
                     </IconButton>
                 </CardActions>
-                <UserDeviceDialog userDeviceId={userDeviceId} openDialog={this.props.openDialog}/>
             </Card>     
         )
     }
 }
 
-UserDevice.propTypes = {
-    user: PropTypes.object.isRequired,
-    userDevice: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired,
-    openDialog: PropTypes.bool
-}
+// UserDevice.propTypes = {
+//     user: PropTypes.object.isRequired,
+//     userDevice: PropTypes.object.isRequired,
+//     classes: PropTypes.object.isRequired,
+//     openDialog: PropTypes.bool
+// }
 
 export default withStyles(styles)(UserDevice);

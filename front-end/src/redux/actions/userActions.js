@@ -1,28 +1,21 @@
 // user actions
 import {
-    SET_ERRORS, 
-    CLEAR_ERRORS, 
-    LOADING_UI, 
-    STOP_LOADING_UI,
-    SET_AUTHENTICATED,
+    LOADING_UI,
+    CLEAR_ERRORS,
+    SET_ERRORS,
+
     SET_UNAUTHENTICATED,
     LOADING_USER,
     SET_USER,
     GET_ACTIVE_USER_DEVICES,
     GET_INACTIVE_USER_DEVICES,
     GET_ACTIVE_USER_ADVENTURES,
-    GET_INACTIVE_USER_ADVENTURES,
-    GET_USER_DEVICES,
-    GET_USER_DEVICE,
-    GET_USER_ADVENTURES,
-    GET_USER_ADVENTURE,
-    POST_CHECKOUT,
-    GET_CHECKOUTS 
+    GET_INACTIVE_USER_ADVENTURES
 } from '../types';
 
 // axios
 import axios from 'axios';
-
+ 
 // redux action to login users 
 export const loginUser = (userData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI });
@@ -32,16 +25,16 @@ export const loginUser = (userData, history) => (dispatch) => {
             setAuthorizationHeader(res.data.token);
             dispatch(getUserData());
             dispatch({ type: CLEAR_ERRORS });
-            history.push('/');
+            history.push('/'); 
         })
         .catch(err => {
             dispatch({
                 type: SET_ERRORS,
-                payload: err.res.data
+                payload: err.response.data
             })
         });
 } 
-
+ 
 // redux action to signup new users 
 export const signupUser = (newUserData, history) => (dispatch) => {
     dispatch({ type: LOADING_UI });
@@ -74,21 +67,6 @@ export const getUserData = () => (dispatch) => {
         })
         .catch((err) => console.log(err));
 };
-
-// redux action to get one specific userDevice
-export const getUserDevice = (userDeviceId) => (dispatch) => {
-    dispatch({ type: LOADING_UI });
-    axios
-        .get(`/userDevices/${userDeviceId}`)
-        .then((res) => { 
-            dispatch({
-                type: GET_USER_DEVICE,
-                payload: res.data
-            });
-            dispatch({ type: STOP_LOADING_UI });
-        })
-        .catch((err) => console.log(err));
-}
 
 // redux action to loggout users
 export const logoutUser = () => (dispatch) => {

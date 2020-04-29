@@ -5,7 +5,7 @@ import {
     LOADING_UI, 
     STOP_LOADING_UI
 } from '../types';
-
+ 
 // initial state
 const initialState = {
 loading: false,
@@ -15,7 +15,7 @@ errors: null
 // function to determine the type of action to set state
 export default function(state = initialState, action){
 switch(action.type){
-    case SET_ERRORS:
+    case SET_ERRORS: 
         return{
             ...state,
             loading: false,

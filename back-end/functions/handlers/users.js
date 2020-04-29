@@ -58,8 +58,8 @@ exports.signup = (req, res) => {
                 userId
             };
             return db
-                        .doc(`/users/${newUser.userHandle}`)
-                        .set(userCredentials);
+                    .doc(`/users/${newUser.userHandle}`)
+                    .set(userCredentials);
         })
         .then(() => {
             return res.status(201).json({ token });
@@ -68,10 +68,10 @@ exports.signup = (req, res) => {
             console.error(err);
             // check if the email exists
             if(err.code === 'auth/email-already-in-use'){
-                return res.status(400).json({ email: 'Email is already in use' })
-            } else {
-                return res.status(500).json({ general: 'Something went wrong, please try again'})
-            }
+                    return res.status(400).json({ email: 'Email is already in use' })
+                } else {
+                    return res.status(500).json({ general: 'Something went wrong, please try again'})
+                }
         });
 }
 
@@ -98,7 +98,7 @@ exports.login = (req,res) => {
             console.error(err);
             // auth/wrong-password
             // auth/user-not-found
-            return res.header('Access-Control-Allow-Origin', '*')
+            return res
                 .status(403)
                 .json({ general: 'Wrong credentials, please try again' });
         });

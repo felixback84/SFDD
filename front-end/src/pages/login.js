@@ -121,12 +121,12 @@ class login extends Component {
 }
 
 // check to right props are passing
-login.propTypes = {
-    classes: PropTypes.object.isRequired,
-    loginUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    ui: PropTypes.object.isRequired
-}  
+// login.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//     loginUser: PropTypes.func.isRequired,
+//     user: PropTypes.object.isRequired,
+//     ui: PropTypes.object.isRequired
+// }  
 
 // connect to global state in redux
 const mapStateToProps = (state) => ({

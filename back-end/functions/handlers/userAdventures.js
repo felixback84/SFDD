@@ -3,7 +3,7 @@ const { db } = require('../utilities/admin');
 
 // get all userAdventures
 exports.getAllUserAdventures = (req, res) => {
-    let userAdventures = {};
+    let userAdventures = [];
     db
         .collection('userAdventures')
         .where('userHandle', '==', req.user.userHandle)

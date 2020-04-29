@@ -53,11 +53,12 @@ export default {
         paper: {
             padding: 20
         },
-        card: {
-            position: 'relative',
-            display: 'flex',
-            marginBottom: 20
-            },
+
+        // card: {
+        //     position: 'relative',
+        //     display: 'flex',
+        //     marginBottom: 20
+        // },
         image: {
             minWidth: 100
         },
@@ -65,6 +66,7 @@ export default {
             padding: 25,
             objectFit: 'cover'
         },
+
         profile: {
             '& .image-wrapper': {
                 textAlign: 'center',

@@ -22,7 +22,7 @@ const middleware = [thunk];
 const reducers = combineReducers({
     ui: uiReducer,
     user: userReducer,
-    userDevices: userDevicesReducer,
+    userDevices1: userDevicesReducer,
     userAdventures: userAdventuresReducer,
     dataSets: dataSetsReducer,
     checkouts: checkoutsReducer,

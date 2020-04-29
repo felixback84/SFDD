@@ -7,21 +7,21 @@ import PropTypes from 'prop-types';
 // Components
 import UserDevice from '../../components/myWorld/userDevices/UserDevice';
 import UserDeviceSkeleton from '../../utilities/UserDeviceSkeleton';
-
+ 
 // Redux stuff
 import { connect } from 'react-redux';
-import { getUserData } from '../../redux/actions/userActions';
+import { getUserDevices } from '../../redux/actions/userDevicesActions';
 
 class myWorldDevices extends Component {
 
     componentDidMount() {
-        this.props.getUserData(); 
+        this.props.getUserDevices(); 
         
     }
 
     render() {
         const { userDevices, loading } = this.props;
-        
+        //console.log(userDevices[0]);
         let userDevicesMarkup = !loading ? (
             userDevices.map(userDevice => <UserDevice key={userDevice.userDeviceId} userDevice={userDevice}/>)
         ) : (
@@ -37,13 +37,13 @@ class myWorldDevices extends Component {
     } 
 }
 
-myWorldDevices.propTypes = {
-    user: PropTypes.object.isRequired
-}
+// myWorldDevices.propTypes = {
+//     user: PropTypes.object.isRequired
+// }
 
 const mapStateToProps = state => ({
-    userDevices: state.user.userDevices,
-    loading: state.user.loading
+    userDevices: state.userDevices1.userDevices,
+    loading: state.userDevices1.loading
 })
 
-export default connect(mapStateToProps, {getUserData})(myWorldDevices);
+export default connect(mapStateToProps, {getUserDevices})(myWorldDevices);

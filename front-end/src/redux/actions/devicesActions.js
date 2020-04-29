@@ -1,4 +1,4 @@
-// device actions
+// devices actions
 import {
     LOADING_DEVICES, 
     GET_DEVICES, 
