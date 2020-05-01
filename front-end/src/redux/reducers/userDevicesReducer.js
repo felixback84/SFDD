@@ -10,6 +10,7 @@ const initialState = {
     userDevices:[],
     userDevice:{
         device:{
+            imgUrl:[],
             dataSets:{}
         }
     },

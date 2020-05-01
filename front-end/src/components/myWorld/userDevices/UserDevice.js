@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 
-// dayjs
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-
 // Proptypes
 import PropTypes from 'prop-types';
 
@@ -34,8 +30,7 @@ const styles = (theme) => ({
 export class UserDevice extends Component {
     
     render() {
-        dayjs.extend(relativeTime);
-
+        
         const {  
             classes,
             userDevice: { 
