@@ -32,7 +32,7 @@ const TitleToDialogUserDevice = (props) => {
                 {`Name of Device: ${props.nameOfDevice}`}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="h1">
-                {`Mine since: ${props.createdAt}`}
+                {`Mine since: ${dayjs(props.createdAt).format('h:mm a, MMMM DD YYYY')}`}
             </Typography>
             {onClose ? (
             <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>

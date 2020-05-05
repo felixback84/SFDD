@@ -29,7 +29,7 @@ export default function SwitchButtonToUserDevices(props) {
   return(
     <FormControlLabel
       control={<PurpleSwitch checked={state.checkedA} onChange={handleChange} name="checkedA" />}
-      label={<Typography>Active: {props.labelToSwitch}</Typography>}
+      label={<Typography>{props.labelToSwitch}</Typography>}
     />
   )
 }

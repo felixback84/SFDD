@@ -12,7 +12,8 @@ const ChekerContentToDialogUserDevice = (props) => {
         howManyAdventures, 
         description, 
         imgUrl, 
-        ageRate 
+        ageRate,
+        nameOfDevice 
     } = props;
 
     return(
@@ -28,7 +29,8 @@ const ChekerContentToDialogUserDevice = (props) => {
                         howManyAdventures={howManyAdventures}
                         description={description} 
                         imgUrl={imgUrl} 
-                        ageRate={ageRate} 
+                        ageRate={ageRate}
+                        nameOfDevice={nameOfDevice} 
                     />
                 </Grid>
             )

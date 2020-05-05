@@ -6,10 +6,12 @@ import MyButton from '../../../utilities/MyButton';
 import TitleToDialogUserDevice from './TitleToDialogUserDevice';
 import ChekerContentToDialogUserDevice from './ChekerContentToDialogUserDevice';
 import ActionsToDialogUserDevice from './ActionsToDialogUserDevice';
+import DataSet from './DataSet';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
 import Dialog from '@material-ui/core/Dialog';
+import Slide from '@material-ui/core/Slide';
 
 // Icons
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
@@ -17,10 +19,10 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 // Redux stuff
 import { connect } from 'react-redux';
 import { getUserDevice } from '../../../redux/actions/userDevicesActions';
+import { getAllDataSetsUserDevice } from '../../../redux/actions/dataSetsActions';
 
+// styles
 const styles = (theme) => ({
-    
-    
     expandButton: {
         position: 'absolute',
         left: '90%'
@@ -33,6 +35,11 @@ const styles = (theme) => ({
     gridItems:{
         textAlign: 'center'
     }
+});
+
+// transition
+const Transition = React.forwardRef(function Transition(props,ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
 });
 
 class UserDeviceDialog extends Component {
@@ -52,6 +59,7 @@ class UserDeviceDialog extends Component {
         this.setState({ open: true });
         // redux action
         this.props.getUserDevice(this.props.userDeviceId);
+        this.props.getAllDataSetsUserDevice(this.props.userDeviceId);
     }
 
     handleClose = () => {
@@ -59,6 +67,7 @@ class UserDeviceDialog extends Component {
     } 
 
     render(){
+        
         // component props and redux props
         const {
             classes,
@@ -73,9 +82,17 @@ class UserDeviceDialog extends Component {
                     ageRate
                 }
             },
+            dataSets,
             ui: { loading }
         } = this.props;
-        
+
+        // dataSet
+        let dataSetsMarkup = !loading ? (
+            dataSets.map(dataSet => <DataSet key={dataSet.dataSetId} dataSet={dataSet}/>)
+        ) : (
+            <UserDeviceSkeleton/>
+        );
+
         return(
             <Fragment>
                 {/* Open button */}
@@ -83,8 +100,18 @@ class UserDeviceDialog extends Component {
                     <UnfoldMore color="primary"/>
                 </MyButton>
                 {/* Dialog box */}
-                <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">    
-                    <TitleToDialogUserDevice onClose={this.handleClose} nameOfDevice={nameOfDevice} createdAt={createdAt}/>
+                <Dialog 
+                    fullScreen 
+                    open={this.state.open} 
+                    onClose={this.handleClose} 
+                    fullWidth maxWidth="sm" 
+                    TransitionComponent={Transition}
+                >    
+                    <TitleToDialogUserDevice 
+                        onClose={this.handleClose} 
+                        nameOfDevice={nameOfDevice} 
+                        createdAt={createdAt}
+                    />
                     <ChekerContentToDialogUserDevice 
                         loading={loading} 
                         createdAt={createdAt}
@@ -92,8 +119,11 @@ class UserDeviceDialog extends Component {
                         description={description} 
                         imgUrl={imgUrl} 
                         ageRate={ageRate} 
+                        nameOfDevice={nameOfDevice}
                         />
-                    {/* aca van data sets */}
+                    {/* dataSets*/}
+                    <hr className={classes.visibleSeparator}/>
+                    {dataSetsMarkup}
                     <ActionsToDialogUserDevice/>
                 </Dialog>        
             </Fragment>   
@@ -110,13 +140,17 @@ class UserDeviceDialog extends Component {
 //     UI: PropTypes.object.isRequired
 // };
 
+// redux state & actions
 const mapStateToProps = (state) => ({
+    loading: state.userDevices1.loading,
     userDevice: state.userDevices1.userDevice,
-    ui: state.ui
+    ui: state.ui,
+    dataSets: state.dataSets1.dataSets
 });
 
 const mapActionsToProps = {
-    getUserDevice
+    getUserDevice,
+    getAllDataSetsUserDevice
 };
 
 export default connect(mapStateToProps,mapActionsToProps)(withStyles(styles)(UserDeviceDialog));

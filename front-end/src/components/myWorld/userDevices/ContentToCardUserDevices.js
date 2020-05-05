@@ -17,18 +17,21 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
 const styles = (theme) => ({
-    
+    ListItem: {
+        padding:6
+    }  
 });
 
 const ContentToCardUserDevices = (props) => {
     dayjs.extend(relativeTime);
-    //const {classes} = props;
+    const {classes} = props;
     return (
         <CardContent>
-            <Grid container spacing={1}>
-                <Grid item xs={4}>
-                    <ListItem>
-                        <ListItemAvatar>
+            <Grid container spacing={1} alignItems="center">
+                <Grid item xs={1}></Grid>
+                <Grid item xs={3}>
+                    <ListItem className={classes.ListItem}>
+                        <ListItemAvatar >
                             <Avatar>
                                 <ImageIcon />
                             </Avatar>
@@ -39,9 +42,10 @@ const ContentToCardUserDevices = (props) => {
                         />
                     </ListItem>
                 </Grid>
+                <Divider orientation="vertical" flexItem/>
                 <Grid item xs={4}>
-                    <ListItem>
-                        <ListItemAvatar>
+                    <ListItem className={classes.ListItem}>
+                        <ListItemAvatar >
                             <Avatar>
                                 <WorkIcon />
                             </Avatar>
@@ -52,9 +56,10 @@ const ContentToCardUserDevices = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Grid item xs={4}>
-                    <ListItem>
-                        <ListItemAvatar>
+                <Divider orientation="vertical" flexItem/>
+                <Grid item xs={3}>
+                    <ListItem className={classes.ListItem}>
+                        <ListItemAvatar >
                             <Avatar>
                                 <BeachAccessIcon />
                             </Avatar>

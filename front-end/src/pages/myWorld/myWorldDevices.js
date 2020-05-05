@@ -32,7 +32,7 @@ class myWorldDevices extends Component {
                 <Grid item sm={12} xs={12}>
                     {userDevicesMarkup}
                 </Grid>
-            </Grid>
+            </Grid> 
         );
     } 
 }

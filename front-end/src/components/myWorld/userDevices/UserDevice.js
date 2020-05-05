@@ -22,7 +22,7 @@ const styles = (theme) => ({
     },
     visibleSeparator: {
         width: '100%',
-        borderBottom: '1px solid rgba(0,0,0,0.1)',
+        borderBottom: '0.5px rgba(0,0,0,0.1)',
         marginBottom: '1px'
     },
 });
@@ -56,6 +56,7 @@ export class UserDevice extends Component {
                     createdAt={createdAt} 
                     howManyAdventures={howManyAdventures} 
                     description={description}
+                    nameOfDevice={nameOfDevice}
                 />
                 <hr className={classes.visibleSeparator}/>
                 <ActionsToCardUserDevices userDeviceId={userDeviceId}/>

@@ -24,7 +24,7 @@ const reducers = combineReducers({
     user: userReducer,
     userDevices1: userDevicesReducer,
     userAdventures: userAdventuresReducer,
-    dataSets: dataSetsReducer,
+    dataSets1: dataSetsReducer,
     checkouts: checkoutsReducer,
     devices: devicesReducer,
     adventures: adventuresReducer
