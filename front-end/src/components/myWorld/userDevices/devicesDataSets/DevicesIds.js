@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 // components
-import DataSetHilda from '../components/myWorld/userDevices/DataSetHilda';
-import DataSetHalo from '../components/myWorld/userDevices/DataSetHalo';
-import UserDeviceSkeleton from './UserDeviceSkeleton';
+import DataSetHilda from './DataSetHilda';
+import DataSetHalo from './DataSetHalo';
+import UserDeviceSkeleton from '../../../../utilities/UserDeviceSkeleton';
 
 // switch case
 class DeviceIds extends Component {

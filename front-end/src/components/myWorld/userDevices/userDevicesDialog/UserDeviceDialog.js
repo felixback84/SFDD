@@ -2,11 +2,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // Components
-import MyButton from '../../../utilities/MyButton';
+import MyButton from '../../../../utilities/MyButton';
 import TitleToDialogUserDevice from './TitleToDialogUserDevice';
 import ChekerContentToDialogUserDevice from './ChekerContentToDialogUserDevice';
+import DevicesIds from '../devicesDataSets/DevicesIds';
 import ActionsToDialogUserDevice from './ActionsToDialogUserDevice';
-import DevicesIds from '../../../utilities/DevicesIds';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -18,8 +18,8 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { getUserDevice } from '../../../redux/actions/userDevicesActions';
-import { getAllDataSetsUserDevice } from '../../../redux/actions/dataSetsActions';
+import { getUserDevice } from '../../../../redux/actions/userDevicesActions';
+import { getAllDataSetsUserDevice } from '../../../../redux/actions/dataSetsActions';
 
 // styles
 const styles = (theme) => ({

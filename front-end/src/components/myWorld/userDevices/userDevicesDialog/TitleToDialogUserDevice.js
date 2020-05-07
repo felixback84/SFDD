@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 // icons
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+
 const styles = (theme) => ({
     root: {
         margin: 0,

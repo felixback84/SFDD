@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 //mui stuff
 import CardActions from '@material-ui/core/CardActions';
 import IconButton from '@material-ui/core/IconButton';
 
 // components
-import UserDeviceDialog from './UserDeviceDialog';
+import UserDeviceDialog from '../userDevicesDialog/UserDeviceDialog';
 
 // icons
 import FavoriteIcon from '@material-ui/icons/Favorite';

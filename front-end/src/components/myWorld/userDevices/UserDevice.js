@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
 
 // Proptypes
 import PropTypes from 'prop-types';
 
 // Componets
-//import MyButton from '../../../utilities/MyButton';
 import VideoPlayer from '../../util/VideoPlayer';
-import HeaderToCardUserDevices from './HeaderToCardUserDevices';
-import ContentToCardUserDevices from './ContentToCardUserDevices';
-import ActionsToCardUserDevices from './ActionsToCardUserDevices';
+import HeaderToCardUserDevices from './userDeviceCard/HeaderToCardUserDevices';
+import ContentToCardUserDevices from './userDeviceCard/ContentToCardUserDevices';
+import ActionsToCardUserDevices from './userDeviceCard/ActionsToCardUserDevices';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
