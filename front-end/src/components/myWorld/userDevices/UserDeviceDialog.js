@@ -6,7 +6,7 @@ import MyButton from '../../../utilities/MyButton';
 import TitleToDialogUserDevice from './TitleToDialogUserDevice';
 import ChekerContentToDialogUserDevice from './ChekerContentToDialogUserDevice';
 import ActionsToDialogUserDevice from './ActionsToDialogUserDevice';
-import DataSet from './DataSet';
+import DevicesIds from '../../../utilities/DevicesIds';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -45,19 +45,14 @@ const Transition = React.forwardRef(function Transition(props,ref) {
 class UserDeviceDialog extends Component {
 
     state = {
-        open: false
+        open: false,
+        deviceId: null
     };
 
     // events
-    componentDidMount(){
-        if(this.props.openDialog){
-            this.handleOpen();
-        }
-    };
-
     handleOpen = () => { 
         this.setState({ open: true });
-        // redux action
+        // redux actions
         this.props.getUserDevice(this.props.userDeviceId);
         this.props.getAllDataSetsUserDevice(this.props.userDeviceId);
     }
@@ -67,11 +62,12 @@ class UserDeviceDialog extends Component {
     } 
 
     render(){
-        
         // component props and redux props
         const {
             classes,
             userDevice: { 
+                userDeviceId,
+                deviceId,
                 createdAt,
                 active,
                 device: {
@@ -86,17 +82,13 @@ class UserDeviceDialog extends Component {
             ui: { loading }
         } = this.props;
 
-        // dataSet
-        let dataSetsMarkup = !loading ? (
-            dataSets.map(dataSet => <DataSet key={dataSet.dataSetId} dataSet={dataSet}/>)
-        ) : (
-            <UserDeviceSkeleton/>
-        );
-
         return(
             <Fragment>
                 {/* Open button */}
-                <MyButton onClick={this.handleOpen} tip="Expand scream" tipClassName={classes.expandButton}>
+                <MyButton onClick={this.handleOpen} 
+                    tip="Expand scream" 
+                    tipClassName={classes.expandButton}
+                >
                     <UnfoldMore color="primary"/>
                 </MyButton>
                 {/* Dialog box */}
@@ -121,9 +113,15 @@ class UserDeviceDialog extends Component {
                         ageRate={ageRate} 
                         nameOfDevice={nameOfDevice}
                         />
+                    <hr className={classes.visibleSeparator}/>    
                     {/* dataSets*/}
-                    <hr className={classes.visibleSeparator}/>
-                    {dataSetsMarkup}
+                    <DevicesIds 
+                        deviceId={deviceId} 
+                        userDeviceId={userDeviceId}
+                        dataSets={dataSets}
+                        loading={loading}
+                    />
+                    {/* dialog actions */}
                     <ActionsToDialogUserDevice/>
                 </Dialog>        
             </Fragment>   
@@ -131,22 +129,12 @@ class UserDeviceDialog extends Component {
     }   
 }
 
-// ScreamDialog.propTypes = {
-//     clearErrors: PropTypes.func.isRequired,
-//     getScream: PropTypes.func.isRequired,
-//     screamId: PropTypes.string.isRequired,
-//     userHandle: PropTypes.string.isRequired,
-//     scream: PropTypes.object.isRequired,
-//     UI: PropTypes.object.isRequired
-// };
-
-// redux state & actions
 const mapStateToProps = (state) => ({
     loading: state.userDevices1.loading,
     userDevice: state.userDevices1.userDevice,
     ui: state.ui,
     dataSets: state.dataSets1.dataSets
-});
+})
 
 const mapActionsToProps = {
     getUserDevice,

@@ -33,7 +33,8 @@ export class UserDevice extends Component {
         
         const {  
             classes,
-            userDevice: { 
+            userDevice: {
+                deviceId, 
                 userDeviceId,
                 userHandle,
                 createdAt,
@@ -50,7 +51,7 @@ export class UserDevice extends Component {
 
         return (
             <Card className={classes.card}>
-                <HeaderToCardUserDevices nameOfDevice={nameOfDevice} ageRate={ageRate}/>
+                <HeaderToCardUserDevices nameOfDevice={nameOfDevice} ageRate={ageRate} />
                 <VideoPlayer url={videoUrl} widht={100} />
                 <ContentToCardUserDevices 
                     createdAt={createdAt} 
@@ -59,7 +60,7 @@ export class UserDevice extends Component {
                     nameOfDevice={nameOfDevice}
                 />
                 <hr className={classes.visibleSeparator}/>
-                <ActionsToCardUserDevices userDeviceId={userDeviceId}/>
+                <ActionsToCardUserDevices userDeviceId={userDeviceId} deviceId={deviceId}/>
             </Card>     
         )
     }

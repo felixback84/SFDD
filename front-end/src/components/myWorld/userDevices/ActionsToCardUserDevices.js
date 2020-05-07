@@ -16,7 +16,10 @@ const ContentToCardUserDevices = (props) => {
     return(
         <CardActions disableSpacing>
             {/* Dialog */}
-            <UserDeviceDialog userDeviceId={props.userDeviceId} />
+            <UserDeviceDialog 
+                userDeviceId={props.userDeviceId} 
+                deviceId={props.deviceId}
+            />
             {/* Other btn */}
             <IconButton aria-label="add to favorites">
                 <FavoriteIcon />
