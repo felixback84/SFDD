@@ -26,14 +26,14 @@ const styles = (theme) => ({
 
 const TitleToDialogUserDevice = (props) => {
     dayjs.extend(relativeTime);
-    const { classes, onClose, ...other } = props;
+    const { classes, onClose } = props;
     return (
-        <MuiDialogTitle disableTypography className={classes.root} {...other}>
+        <MuiDialogTitle disableTypography className={classes.root} >
             <Typography variant="body2" color="textSecondary" component="h1">
-                {`Name of Device: ${props.nameOfDevice}`}
+                {`Name of Device: ${props.nameofdevice}`}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="h1">
-                {`Mine since: ${dayjs(props.createdAt).format('h:mm a, MMMM DD YYYY')}`}
+                {`For ages from: ${props.agerate}`}
             </Typography>
             {onClose ? (
             <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>

@@ -12,13 +12,14 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
-const ContentToCardUserDevices = (props) => {
+const ActionsToCardUserDevices = (props) => {
+    const {userdeviceid, deviceid} = props;
     return(
         <CardActions disableSpacing>
             {/* Dialog */}
             <UserDeviceDialog 
-                userDeviceId={props.userDeviceId} 
-                deviceId={props.deviceId}
+                userdeviceid={userdeviceid} 
+                deviceid={deviceid}
             />
             {/* Other btn */}
             <IconButton aria-label="add to favorites">
@@ -34,4 +35,4 @@ const ContentToCardUserDevices = (props) => {
     )
 }    
 
-export default ContentToCardUserDevices;
+export default ActionsToCardUserDevices;

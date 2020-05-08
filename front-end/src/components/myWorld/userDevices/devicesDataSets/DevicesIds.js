@@ -14,18 +14,18 @@ class DeviceIds extends Component {
         const HILDA = 'gE2ySDQaMymbZe0r6KEH';
 
         const {
-            deviceId, 
-            dataSets,
+            deviceid, 
+            datasets,
             loading 
         } = this.props;
         
-        switch(deviceId){
+        switch(deviceid){
             case HILDA:
                 // specific component
                 let dataSetsHildaMarkup = !loading ? (
-                    dataSets.map(dataSet => <DataSetHilda 
-                                key={dataSet.dataSetId} 
-                                dataSet={dataSet} 
+                    datasets.map(dataset => <DataSetHilda 
+                                key={dataset.datasetid} 
+                                dataset={dataset} 
                             />)
                     ) : (
                         <UserDeviceSkeleton/>
@@ -34,9 +34,9 @@ class DeviceIds extends Component {
             case HALO:
                 // specific component
                 let dataSetsHaloMarkup = !loading ? (
-                    dataSets.map(dataSet => <DataSetHalo 
-                                key={dataSet.dataSetId} 
-                                dataSet={dataSet} 
+                    datasets.map(dataset => <DataSetHalo 
+                                key={dataset.datasetid} 
+                                dataset={dataset} 
                             />)
                     ) : (
                         <UserDeviceSkeleton/>

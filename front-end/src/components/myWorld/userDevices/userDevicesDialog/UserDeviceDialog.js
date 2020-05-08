@@ -45,16 +45,15 @@ const Transition = React.forwardRef(function Transition(props,ref) {
 class UserDeviceDialog extends Component {
 
     state = {
-        open: false,
-        deviceId: null
+        open: false
     };
 
     // events
     handleOpen = () => { 
         this.setState({ open: true });
         // redux actions
-        this.props.getUserDevice(this.props.userDeviceId);
-        this.props.getAllDataSetsUserDevice(this.props.userDeviceId);
+        this.props.getUserDevice(this.props.userdeviceid);
+        this.props.getAllDataSetsUserDevice(this.props.userdeviceid);
     }
 
     handleClose = () => {
@@ -66,8 +65,6 @@ class UserDeviceDialog extends Component {
         const {
             classes,
             userDevice: { 
-                userDeviceId,
-                deviceId,
                 createdAt,
                 active,
                 device: {
@@ -101,24 +98,23 @@ class UserDeviceDialog extends Component {
                 >    
                     <TitleToDialogUserDevice 
                         onClose={this.handleClose} 
-                        nameOfDevice={nameOfDevice} 
-                        createdAt={createdAt}
+                        nameofdevice={nameOfDevice} 
+                        agerate={ageRate} 
                     />
                     <ChekerContentToDialogUserDevice 
                         loading={loading} 
-                        createdAt={createdAt}
-                        howManyAdventures={howManyAdventures}
+                        createdat={createdAt}
+                        howmanyadventures={howManyAdventures}
                         description={description} 
-                        imgUrl={imgUrl} 
-                        ageRate={ageRate} 
-                        nameOfDevice={nameOfDevice}
+                        imgurl={imgUrl} 
+                        agerate={ageRate} 
+                        nameofdevice={nameOfDevice}
                         />
                     <hr className={classes.visibleSeparator}/>    
                     {/* dataSets*/}
                     <DevicesIds 
-                        deviceId={deviceId} 
-                        userDeviceId={userDeviceId}
-                        dataSets={dataSets}
+                        deviceid={this.props.deviceid} 
+                        datasets={dataSets}
                         loading={loading}
                     />
                     {/* dialog actions */}

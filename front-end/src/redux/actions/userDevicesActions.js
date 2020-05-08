@@ -28,11 +28,11 @@ export const getUserDevices = () => (dispatch) => {
 }
 
 // redux action to get one specific userDevice
-export const getUserDevice = (userDeviceId) => (dispatch) => {
+export const getUserDevice = (userdeviceid) => (dispatch) => {
     dispatch({ type: LOADING_UI });
     //dispatch({ type: LOADING_USER_DEVICES });
     axios
-        .get(`/userdevices/${userDeviceId}`)
+        .get(`/userdevices/${userdeviceid}`)
         .then((res) => { 
             dispatch({
                 type: GET_USER_DEVICE,

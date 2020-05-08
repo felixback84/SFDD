@@ -26,9 +26,6 @@ const styles = (theme) => ({
         overflow: 'hidden',
         backgroundColor: theme.palette.background.paper,
     },
-    img:{
-        width:'100%'
-    },
     gridList: {
         flexWrap: 'nowrap',
         transform: 'translateZ(0)'
@@ -41,20 +38,19 @@ const ContentToDialogUserDevice = (props) => {
     
     const {
         classes, 
-        createdAt, 
-        howManyAdventures, 
+        createdat, 
+        howmanyadventures, 
         description, 
-        imgUrl, 
-        nameOfDevice,
-        ageRate
+        imgurl, 
+        nameofdevice
     } = props;
 
     return(
         <DialogContent dividers>
             {/* Images */}
-            <div className={classes.root}>
-                <GridList className={classes.gridList} cols={1}>
-                    {imgUrl.map((imgUrl, index) => {return <img src={imgUrl} key={index} className={classes.img}/>})}
+            <div className={classes.root} >
+                <GridList cellHeight={500} className={classes.gridList} cols={1}>
+                    {imgurl.map((imgurl, index) => {return <img src={imgurl} key={index} />})}
                 </GridList>
             </div>
             {/* Content*/}
@@ -71,8 +67,8 @@ const ContentToDialogUserDevice = (props) => {
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
-                            primary={`Available adventures for ${nameOfDevice} device:`} 
-                            secondary={howManyAdventures} 
+                            primary={`Available adventures for ${nameofdevice} device:`} 
+                            secondary={howmanyadventures} 
                         />
                     </ListItem>
                 </Grid>
@@ -85,7 +81,7 @@ const ContentToDialogUserDevice = (props) => {
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
-                            primary={`Why ${nameOfDevice} is awesome?:`}
+                            primary={`Why ${nameofdevice} is awesome?:`}
                             secondary={description}
                         />
                     </ListItem>
@@ -100,7 +96,7 @@ const ContentToDialogUserDevice = (props) => {
                         </ListItemAvatar>
                         <ListItemText 
                             primary="Mine Since:" 
-                            secondary={dayjs(createdAt).format('h:mm a, MMMM DD YYYY')} 
+                            secondary={dayjs(createdat).format('h:mm a, MMMM DD YYYY')} 
                         />
                     </ListItem>
                 </Grid>

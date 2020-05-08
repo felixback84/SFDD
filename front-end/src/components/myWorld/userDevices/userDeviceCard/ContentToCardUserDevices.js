@@ -24,7 +24,14 @@ const styles = (theme) => ({
 
 const ContentToCardUserDevices = (props) => {
     dayjs.extend(relativeTime);
-    const {classes} = props;
+    const {
+        classes,
+        createdat,
+        nameofdevice,
+        howmanyadventures,
+        description
+    } = props;
+
     return (
         <CardContent>
             <Grid container spacing={1} alignItems="center">
@@ -38,7 +45,7 @@ const ContentToCardUserDevices = (props) => {
                         </ListItemAvatar>
                         <ListItemText 
                             primary="Mine Since:" 
-                            secondary={dayjs(props.createdAt).format('h:mm a, MMMM DD YYYY')} 
+                            secondary={dayjs(createdat).format('h:mm a, MMMM DD YYYY')} 
                         />
                     </ListItem>
                 </Grid>
@@ -51,8 +58,8 @@ const ContentToCardUserDevices = (props) => {
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
-                            primary={`Why ${props.nameOfDevice} is awesome?:`}
-                            secondary={props.description}
+                            primary={`Why ${nameofdevice} is awesome?:`}
+                            secondary={description}
                         />
                     </ListItem>
                 </Grid>
@@ -65,8 +72,8 @@ const ContentToCardUserDevices = (props) => {
                             </Avatar>
                         </ListItemAvatar>
                         <ListItemText 
-                            primary={`Available adventures for ${props.nameOfDevice} device:`} 
-                            secondary={props.howManyAdventures} 
+                            primary={`Available adventures for ${nameofdevice} device:`} 
+                            secondary={howmanyadventures} 
                         />
                     </ListItem>
                 </Grid>

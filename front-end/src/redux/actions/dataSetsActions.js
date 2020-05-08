@@ -11,11 +11,11 @@ import {
 // axios
 import axios from 'axios';
 
-export const getAllDataSetsUserDevice = (userDeviceId) => (dispatch) => {
+export const getAllDataSetsUserDevice = (userdeviceid) => (dispatch) => {
     dispatch({ type: LOADING_UI });
     dispatch({ type: LOADING_DATASETS });
     axios
-        .get(`/user/device/${userDeviceId}/datasets`)
+        .get(`/user/device/${userdeviceid}/datasets`)
         .then((res) => { 
             dispatch({
                 type: GET_DATASETS,

@@ -49,19 +49,19 @@ export class UserDevice extends Component {
 
         return (
             <Card className={classes.card}>
-                <HeaderToCardUserDevices nameOfDevice={nameOfDevice} ageRate={ageRate} />
+                <HeaderToCardUserDevices nameofdevice={nameOfDevice} agerate={ageRate} />
                 <VideoPlayer url={videoUrl} widht={100} />
                 <ContentToCardUserDevices 
-                    createdAt={createdAt} 
-                    howManyAdventures={howManyAdventures} 
+                    createdat={createdAt} 
+                    howmanyadventures={howManyAdventures} 
                     description={description}
-                    nameOfDevice={nameOfDevice}
+                    nameofdevice={nameOfDevice}
                 />
                 <hr className={classes.visibleSeparator}/>
-                <ActionsToCardUserDevices userDeviceId={userDeviceId} deviceId={deviceId}/>
+                <ActionsToCardUserDevices userdeviceid={userDeviceId} deviceid={deviceId}/>
             </Card>     
         )
-    }
+    } 
 }
 
 // UserDevice.propTypes = {

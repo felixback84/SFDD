@@ -16,20 +16,24 @@ const styles = (theme) => ({
 });
 
 const CardToHeader = (props) => {
-    const {classes} = props;
+    const {
+        classes,
+        nameofdevice,
+        agerate
+    } = props;
     return (
         <div>
             <CardHeader
                 avatar={
                     <Avatar aria-label="recipe" className={classes.avatar}>
-                        {props.nameOfDevice.charAt(0)}
+                        {nameofdevice.charAt(0)}
                     </Avatar>
                 }
                 action={
-                    <SwitchButtonToUserDevices labelToSwitch={props.nameOfDevice}/>
+                    <SwitchButtonToUserDevices labelToSwitch={nameofdevice}/>
                 }
-                title={'Name of device: ' + props.nameOfDevice}
-                subheader={'From ages to: ' + props.ageRate}
+                title={'Name of device: ' + nameofdevice}
+                subheader={'For ages from: ' + agerate}
             />
         </div>
     )

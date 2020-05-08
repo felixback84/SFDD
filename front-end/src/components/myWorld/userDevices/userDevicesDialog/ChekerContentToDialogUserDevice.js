@@ -8,12 +8,12 @@ import ContentToDialogUserDevice from './ContentToDialogUserDevice';
 
 const ChekerContentToDialogUserDevice = (props) => {
     const {
-        createdAt, 
-        howManyAdventures, 
+        createdat, 
+        howmanyadventures, 
         description, 
-        imgUrl, 
-        ageRate,
-        nameOfDevice 
+        imgurl, 
+        agerate,
+        nameofdevice 
     } = props;
 
     return(
@@ -25,12 +25,12 @@ const ChekerContentToDialogUserDevice = (props) => {
                     alignItems="center"
                 >
                     <ContentToDialogUserDevice 
-                        createdAt={createdAt}
-                        howManyAdventures={howManyAdventures}
+                        createdat={createdat}
+                        howmanyadventures={howmanyadventures}
                         description={description} 
-                        imgUrl={imgUrl} 
-                        ageRate={ageRate}
-                        nameOfDevice={nameOfDevice} 
+                        imgurl={imgurl} 
+                        agerate={agerate}
+                        nameofdevice={nameofdevice} 
                     />
                 </Grid>
             )

@@ -17,7 +17,7 @@ class DataSetHalo extends Component {
 
         const {
             classes, 
-            dataSet 
+            dataset 
         } = this.props;
 
         //console.log(dataSet);
