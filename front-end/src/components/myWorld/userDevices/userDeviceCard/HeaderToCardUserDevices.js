@@ -19,7 +19,8 @@ const CardToHeader = (props) => {
     const {
         classes,
         nameofdevice,
-        agerate
+        agerate,
+        userdeviceid
     } = props;
     return (
         <div>
@@ -30,7 +31,10 @@ const CardToHeader = (props) => {
                     </Avatar>
                 }
                 action={
-                    <SwitchButtonToUserDevices labelToSwitch={nameofdevice}/>
+                    <SwitchButtonToUserDevices 
+                        labelToSwitch={nameofdevice} 
+                        userdeviceid={userdeviceid}
+                    />
                 }
                 title={'Name of device: ' + nameofdevice}
                 subheader={'For ages from: ' + agerate}

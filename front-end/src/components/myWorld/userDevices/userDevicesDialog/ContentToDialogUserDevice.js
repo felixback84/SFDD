@@ -48,11 +48,11 @@ const ContentToDialogUserDevice = (props) => {
     return(
         <DialogContent dividers>
             {/* Images */}
-            <div className={classes.root} >
+            {/* <div className={classes.root} >
                 <GridList cellHeight={500} className={classes.gridList} cols={1}>
                     {imgurl.map((imgurl, index) => {return <img src={imgurl} key={index} />})}
                 </GridList>
-            </div>
+            </div> */}
             {/* Content*/}
             <Grid container spacing={1} direction="row"
                 justify="center"

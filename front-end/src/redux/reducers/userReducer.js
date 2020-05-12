@@ -48,11 +48,11 @@ export default function(state = initialState, action){
         case GET_ACTIVE_USER_DEVICES:
             return {
                 ...state,
-                activeUserDevices: [
+                activeUserDevices: [ 
                     ...state.activeUserDevices,
                     {
                         userHandle: state.credentials.userHandle,
-                        userDevicesId: action.payload.userDevicesId
+                        userDeviceId: action.payload.userDeviceId
                     }
                 ]
             }; 
@@ -60,7 +60,7 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 activeUserDevices: state.activeUserDevices.filter(
-                    activeUserDevice => activeUserDevice.userDevicesId !== action.payload.userDevicesId
+                    activeUserDevice => activeUserDevice.userDeviceId !== action.payload.userDeviceId
                 )
             }  
         case GET_ACTIVE_USER_ADVENTURES:

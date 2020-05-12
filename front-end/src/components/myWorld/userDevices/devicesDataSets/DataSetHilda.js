@@ -18,16 +18,16 @@ class DataSetHilda extends Component {
         const {
             classes, 
             dataset:{
-                createdAt
+                createdAt,
+                exe1,
+                exe2,
+                exe3
             }
         } = this.props;
 
-        //console.log(dataSet);
-
         return (
             <Card>
-                {createdAt}
-                hi from hilda
+                hola from hilda
             </Card>
         )
     }

@@ -194,7 +194,7 @@ exports.getAuthenticatedUser = (req, res) => {
             return db
                 .collection('activeUserDevices')
                 .where('userHandle', '==', req.user.userHandle)
-                .get()
+                .get()  
         })
         .then((data) => {
             userData.activeUserDevices = [];

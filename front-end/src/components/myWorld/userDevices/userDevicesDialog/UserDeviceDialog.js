@@ -12,6 +12,7 @@ import ActionsToDialogUserDevice from './ActionsToDialogUserDevice';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
+import Typography from '@material-ui/core/Typography';
 
 // Icons
 import UnfoldMore from '@material-ui/icons/UnfoldMore';
@@ -95,11 +96,18 @@ class UserDeviceDialog extends Component {
                     onClose={this.handleClose} 
                     fullWidth maxWidth="sm" 
                     TransitionComponent={Transition}
+                    scroll="body"
                 >    
                     <TitleToDialogUserDevice 
                         onClose={this.handleClose} 
                         nameofdevice={nameOfDevice} 
                         agerate={ageRate} 
+                    /> 
+                    {/* dataSets*/}
+                    <DevicesIds 
+                        deviceid={this.props.deviceid} 
+                        datasets={dataSets}
+                        loading={loading}
                     />
                     <ChekerContentToDialogUserDevice 
                         loading={loading} 
@@ -110,13 +118,6 @@ class UserDeviceDialog extends Component {
                         agerate={ageRate} 
                         nameofdevice={nameOfDevice}
                         />
-                    <hr className={classes.visibleSeparator}/>    
-                    {/* dataSets*/}
-                    <DevicesIds 
-                        deviceid={this.props.deviceid} 
-                        datasets={dataSets}
-                        loading={loading}
-                    />
                     {/* dialog actions */}
                     <ActionsToDialogUserDevice/>
                 </Dialog>        

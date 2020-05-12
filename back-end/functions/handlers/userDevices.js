@@ -52,7 +52,7 @@ exports.getActiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
         .collection('activeUserDevices')
         .where('userHandle', '==', req.user.userHandle)
-        .where('userDevicesId', '==', req.params.userDeviceId)
+        .where('userDeviceId', '==', req.params.userDeviceId)
         .limit(1);
 
     // ask for device
@@ -107,7 +107,7 @@ exports.getInactiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
             .collection('activeUserDevices')
             .where('userHandle', '==', req.user.userHandle)
-            .where('userDevicesId', '==', req.params.userDeviceId)
+            .where('userDeviceId', '==', req.params.userDeviceId)
             .limit(1);
 
     const userDeviceDocument = db.doc(`/userDevices/${req.params.userDeviceId}`);

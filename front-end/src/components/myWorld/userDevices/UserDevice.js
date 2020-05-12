@@ -49,7 +49,11 @@ export class UserDevice extends Component {
 
         return (
             <Card className={classes.card}>
-                <HeaderToCardUserDevices nameofdevice={nameOfDevice} agerate={ageRate} />
+                <HeaderToCardUserDevices 
+                    nameofdevice={nameOfDevice} 
+                    agerate={ageRate} 
+                    userdeviceid={userDeviceId}
+                />
                 <VideoPlayer url={videoUrl} widht={100} />
                 <ContentToCardUserDevices 
                     createdat={createdAt} 
