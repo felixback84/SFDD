@@ -23,7 +23,7 @@ const reducers = combineReducers({
     ui: uiReducer,
     user: userReducer,
     userDevices1: userDevicesReducer,
-    userAdventures: userAdventuresReducer,
+    userAdventures1: userAdventuresReducer,
     dataSets1: dataSetsReducer,
     checkouts: checkoutsReducer,
     devices: devicesReducer,

@@ -265,5 +265,5 @@ exports.createUserPropertyAfterCheckout = functions.firestore
         } else {
             console.log('error from inscription')
         }
-});
+    });
 

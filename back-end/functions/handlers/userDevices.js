@@ -52,8 +52,9 @@ exports.getActiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
         .collection('activeUserDevices')
         .where('userHandle', '==', req.user.userHandle)
-        .where('userDeviceId', '==', req.params.userDeviceId)
-        .limit(1);
+        
+        .where('active', '==', true)
+        .limit(1)
 
     // ask for device
     const userDeviceDocument = db.doc(`/userDevices/${req.params.userDeviceId}`); 
@@ -78,10 +79,14 @@ exports.getActiveUserDevices = (req, res) => {
                 return db
                     // add data to it
                     .collection('activeUserDevices')
+                    //////////////////////////////////////////////////
                     .add({
                         userDeviceId: req.params.userDeviceId,
-                        userHandle: req.user.userHandle
+                        userHandle: req.user.userHandle,
+                        createdAt: new Date().toISOString(),
+                        active: true
                     })
+                    /////////////////////////////////////////////////
                     .then(() => {
                         return userDeviceDocument.update({ active: true });
                     })
@@ -90,7 +95,6 @@ exports.getActiveUserDevices = (req, res) => {
                         //console.log(res);
                         //console.log(userDeviceData);
                         return res.json(userDeviceData);
-                    
                     });
             } else {
                 return res.status(400).json({ error: 'userDevice already active' });
@@ -108,6 +112,7 @@ exports.getInactiveUserDevices = (req, res) => {
             .collection('activeUserDevices')
             .where('userHandle', '==', req.user.userHandle)
             .where('userDeviceId', '==', req.params.userDeviceId)
+            .where('active', '==', true)
             .limit(1);
 
     const userDeviceDocument = db.doc(`/userDevices/${req.params.userDeviceId}`);

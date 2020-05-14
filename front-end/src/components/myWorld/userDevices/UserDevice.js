@@ -38,7 +38,7 @@ export class UserDevice extends Component {
                 createdAt,
                 active,
                 device:{
-                    videoUrl,
+                    videoUrl, 
                     nameOfDevice,
                     howManyAdventures,
                     description,

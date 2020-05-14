@@ -4,7 +4,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
-import IconButton from '@material-ui/core/IconButton';
 
 // components
 import SwitchButtonToUserDevices from './SwitchButtonToUserDevices';
@@ -15,7 +14,7 @@ const styles = (theme) => ({
     }
 });
 
-const CardToHeader = (props) => {
+const HeaderToCardUserDevices = (props) => {
     const {
         classes,
         nameofdevice,
@@ -42,4 +41,4 @@ const CardToHeader = (props) => {
         </div>
     )
 }
-export default withStyles(styles)(CardToHeader);
+export default withStyles(styles)(HeaderToCardUserDevices);

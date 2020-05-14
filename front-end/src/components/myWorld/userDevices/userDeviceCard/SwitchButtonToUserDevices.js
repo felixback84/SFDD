@@ -39,13 +39,8 @@ class SwitchButtonToUserDevice extends Component {
           ) 
     )
         return true;
-        
     else return false;
   };
-
-  // changeBtn = () => {
-  //   this.setState({checkedForUserDevices: true})
-  // }
 
   handleChange = (event) => {
         this.setState({[event.target.name]: event.target.value});
