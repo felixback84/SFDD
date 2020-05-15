@@ -26,3 +26,19 @@ export const getUserAdventures = () => (dispatch) => {
         })
         .catch((err) => console.log(err));
 }
+
+// redux action to get one specific userDevice
+export const getUserAdventure = (useradventureid) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    //dispatch({ type: LOADING_USER_DEVICES });
+    axios
+        .get(`/useradventures/${useradventureid}`)
+        .then((res) => { 
+            dispatch({
+                type: GET_USER_ADVENTURE,
+                payload: res.data
+            });
+            dispatch({ type: STOP_LOADING_UI });
+        })
+        .catch((err) => console.log(err));
+}

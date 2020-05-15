@@ -9,7 +9,14 @@ import {
 const initialState = {
     loading: false,
     userAdventures:[],
-    userAdventure:{}
+    userAdventure:{
+        adventure:{
+            device:{
+            
+            },
+            tags:[]
+        }
+    }
 }
 
 // function to determine the type of action to set state

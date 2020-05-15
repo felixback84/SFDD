@@ -18,7 +18,7 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 
 const styles = (theme) => ({
     ListItem: {
-        padding:6
+        padding:6 
     }  
 });
 
@@ -36,8 +36,7 @@ const ContentToCardUserAdventure = (props) => {
 
     return (
         <CardContent>
-            <Grid container spacing={1} alignItems="center">
-                <Grid item xs={1}></Grid>
+            <Grid container justify="space-evenly" alignItems="center" direction="row" >
                 <Grid item xs={3}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
@@ -51,21 +50,7 @@ const ContentToCardUserAdventure = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem/>
-                <Grid item xs={4}>
-                    <ListItem className={classes.ListItem}>
-                        <ListItemAvatar >
-                            <Avatar>
-                                <WorkIcon />
-                            </Avatar>
-                        </ListItemAvatar>
-                        <ListItemText 
-                            primary={`Why ${title} is awesome?:`}
-                            secondary={description}
-                        />
-                    </ListItem>
-                </Grid>
-                <Divider orientation="vertical" flexItem/>
+                {/* <Divider orientation="vertical" flexItem/> */}
                 <Grid item xs={3}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
@@ -79,6 +64,50 @@ const ContentToCardUserAdventure = (props) => {
                         />
                     </ListItem>
                 </Grid>
+                {/* <Divider orientation="vertical" flexItem/> */}
+                <Grid item xs={3}>
+                    <ListItem className={classes.ListItem}>
+                        <ListItemAvatar >
+                            <Avatar>
+                                <BeachAccessIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText 
+                            primary={`Read in:`} 
+                            secondary={ language }
+                        />
+                    </ListItem>
+                </Grid>
+                {/* <Divider orientation="vertical" flexItem/> */}
+                <Grid item xs={3}>
+                    <ListItem className={classes.ListItem}>
+                        <ListItemAvatar >
+                            <Avatar>
+                                <BeachAccessIcon />
+                            </Avatar>
+                        </ListItemAvatar>
+                        <ListItemText 
+                            primary={`Duration of Adventure:`} 
+                            secondary={duration} 
+                        />
+                    </ListItem>
+                </Grid>
+            </Grid>
+            <hr className={classes.visibleSeparator}/>
+            <Grid container spacing={1} alignItems="center">
+                <Grid item xs={12}>
+                        <ListItem className={classes.ListItem}>
+                            <ListItemAvatar >
+                                <Avatar>
+                                    <WorkIcon />
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText 
+                                primary={`Why ${title} is awesome?:`}
+                                secondary={description}
+                            />
+                        </ListItem>
+                    </Grid>
             </Grid>
         </CardContent>
     )

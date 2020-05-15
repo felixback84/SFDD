@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import VideoPlayer from '../../util/VideoPlayer';
 import HeaderToCardUserAdventure from './userAdventureCard/HeaderToCardUserAdventure';
 import ContentToCardUserAdventure from './userAdventureCard/ContentToCardUserAdventure';
-//import ActionsToCardUserAdventure from './userAdventureCard/ActionsToCardUserAdventure';
+import ActionsToCardUserAdventure from './userAdventureCard/ActionsToCardUserAdventure';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -71,8 +71,8 @@ export class UserAdventure extends Component {
                     duration={duration}
                     language={language}
                 />
-                {/* <hr className={classes.visibleSeparator}/>
-                <ActionsToCardUserAdventure userdeviceid={userDeviceId} deviceid={deviceId}/> */}
+                <hr className={classes.visibleSeparator}/>
+                <ActionsToCardUserAdventure useradventureid={userAdventureId} adventureid={adventureId}/>
             </Card>     
         )
     } 

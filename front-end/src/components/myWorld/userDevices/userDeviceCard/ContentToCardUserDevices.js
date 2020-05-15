@@ -35,7 +35,7 @@ const ContentToCardUserDevices = (props) => {
     return (
         <CardContent>
             <Grid container spacing={1} alignItems="center">
-                <Grid item xs={1}></Grid>
+                
                 <Grid item xs={3}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
@@ -49,8 +49,8 @@ const ContentToCardUserDevices = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem/>
-                <Grid item xs={4}>
+                
+                <Grid item xs={6}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
                             <Avatar>
@@ -63,7 +63,7 @@ const ContentToCardUserDevices = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem/>
+                
                 <Grid item xs={3}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
