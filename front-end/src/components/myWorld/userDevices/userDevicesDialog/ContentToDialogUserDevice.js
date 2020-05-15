@@ -7,8 +7,6 @@ import relativeTime from 'dayjs/plugin/relativeTime';
 import withStyles from '@material-ui/core/styles/withStyles';
 import DialogContent from '@material-ui/core/DialogContent';
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import GridList from '@material-ui/core/GridList';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -40,19 +38,12 @@ const ContentToDialogUserDevice = (props) => {
         classes, 
         createdat, 
         howmanyadventures, 
-        description, 
-        imgurl, 
+        description,  
         nameofdevice
     } = props;
 
     return(
         <DialogContent dividers>
-            {/* Images */}
-            {/* <div className={classes.root} >
-                <GridList cellHeight={500} className={classes.gridList} cols={1}>
-                    {imgurl.map((imgurl, index) => {return <img src={imgurl} key={index} />})}
-                </GridList>
-            </div> */}
             {/* Content*/}
             <Grid container spacing={1} direction="row"
                 justify="center"

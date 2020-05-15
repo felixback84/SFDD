@@ -7,6 +7,7 @@ import TitleToDialogUserDevice from './TitleToDialogUserDevice';
 import ChekerContentToDialogUserDevice from './ChekerContentToDialogUserDevice';
 import DevicesIds from '../devicesDataSets/DevicesIds';
 import ActionsToDialogUserDevice from './ActionsToDialogUserDevice';
+import CarrouselOfImagesUserDevice from './CarrouselOfImagesUserDevice';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -103,6 +104,8 @@ class UserDeviceDialog extends Component {
                         nameofdevice={nameOfDevice} 
                         agerate={ageRate} 
                     /> 
+                    {/* Images */}
+                    <CarrouselOfImagesUserDevice imgurl={imgUrl}/>
                     {/* dataSets*/}
                     <DevicesIds 
                         deviceid={this.props.deviceid} 
