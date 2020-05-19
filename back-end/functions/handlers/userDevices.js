@@ -52,7 +52,6 @@ exports.getActiveUserDevices = (req, res) => {
     const activeUserDeviceDocument = db
         .collection('activeUserDevices')
         .where('userHandle', '==', req.user.userHandle)
-        
         .where('active', '==', true)
         .limit(1)
 

@@ -1,13 +1,16 @@
 // react
-import React from 'react';
+import React, { Component } from 'react';
 
 // mui stuff
 import withStyles from '@material-ui/core/styles/withStyles';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useTheme } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 import Button from '@material-ui/core/Button';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+
+// Redux stuff
+import { connect } from 'react-redux';
 
 const styles = (theme) => ({
     root: {
@@ -23,14 +26,14 @@ const styles = (theme) => ({
     },
 });
 
-const CarrouselOfImagesUserDevice = (props) => {
+const CarrouselOfImagesUserAdventure = (props) => {
     // img props
-    const {imgurl, classes} = props;
+    const {adventure:{imgUrl}, classes} = props;
     const theme = useTheme();
 
     // stepper
     const [activeStep, setActiveStep] = React.useState(0);
-    const maxSteps = imgurl.length;
+    const maxSteps = imgUrl.length;
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -43,7 +46,7 @@ const CarrouselOfImagesUserDevice = (props) => {
         <div className={classes.root}>
             <img
                 className={classes.img}
-                src={imgurl[activeStep]}
+                src={imgUrl[activeStep]}
             />
             <MobileStepper
                 steps={maxSteps}
@@ -67,4 +70,11 @@ const CarrouselOfImagesUserDevice = (props) => {
     );
 }
 
-export default (withStyles(styles)(CarrouselOfImagesUserDevice));
+const mapStateToProps = (state) => ({
+    adventure: state.userAdventures1.userAdventure.adventure
+    
+})
+
+export default connect(mapStateToProps)(withStyles(styles)(CarrouselOfImagesUserAdventure));
+
+

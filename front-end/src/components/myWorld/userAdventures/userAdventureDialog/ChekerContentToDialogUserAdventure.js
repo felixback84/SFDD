@@ -6,11 +6,12 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // components
 import ContentToDialogUserAdventure from './ContentToDialogUserAdventure';
 import AudioToUserAdventure from './AudioToUserAdventure';
+import CarrouselOfImagesUserAdventure from './CarrouselOfImagesUserAdventure';
 
 // Redux stuff
 import { connect } from 'react-redux';
 
-export class ChekerContentToDialogUserAdventure extends Component {
+class ChekerContentToDialogUserAdventure extends Component {
     render(){
         const {
             loading
@@ -27,6 +28,7 @@ export class ChekerContentToDialogUserAdventure extends Component {
                     >   
                         <AudioToUserAdventure />
                         <ContentToDialogUserAdventure />
+                        <CarrouselOfImagesUserAdventure />
                     </Grid>
                 )
         )

@@ -7,7 +7,7 @@ import { red } from '@material-ui/core/colors';
 import Chip from '@material-ui/core/Chip';
 
 // components
-// import SwitchButtonToUserAdventure from './SwitchButtonToUserAdventure';
+import SwitchButtonToUserAdventure from './SwitchButtonToUserAdventure';
 
 const styles = (theme) => ({
     avatar: {
@@ -34,12 +34,12 @@ const HeaderToCardUserAdventure = (props) => {
                         {title.charAt(0)}
                     </Avatar>
                 }
-                // action={
-                //     <SwitchButtonToUserAdventure 
-                //         labelToSwitch={title} 
-                //         useradventureid={useradventureid}
-                //     />
-                // }
+                action={
+                    <SwitchButtonToUserAdventure 
+                        labelToSwitch={title} 
+                        useradventureid={useradventureid}
+                    />
+                }
                 title={'Name of device: ' + title}
                 subheader={tags.map(tag => <Chip className={classes.chip} label={tag}/>)}
             />

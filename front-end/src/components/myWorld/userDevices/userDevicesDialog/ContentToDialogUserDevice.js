@@ -50,7 +50,7 @@ const ContentToDialogUserDevice = (props) => {
                 alignItems="center"
             > 
             {/* Mine since */}
-                <Grid item sm={3} className={classes.gridItems}>
+                <Grid item sm={4} className={classes.gridItems}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
@@ -63,8 +63,8 @@ const ContentToDialogUserDevice = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
-                <Grid item sm={5} className={classes.gridItems}>
+                
+                <Grid item sm={4} className={classes.gridItems}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
@@ -77,8 +77,8 @@ const ContentToDialogUserDevice = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
-                <Grid item sm={3} className={classes.gridItems}>
+                
+                <Grid item sm={4} className={classes.gridItems}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>

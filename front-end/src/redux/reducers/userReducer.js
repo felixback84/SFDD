@@ -70,7 +70,7 @@ export default function(state = initialState, action){
                     ...state.activeUserAdventures,
                     {
                         userHandle: state.credentials.userHandle,
-                        userAdventuresId: action.payload.userAdventuresId
+                        userAdventureId: action.payload.userAdventureId
                     }
                 ]
             }; 
@@ -78,7 +78,7 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 activeUserAdventures: state.activeUserAdventures.filter(
-                    activeUserAdventure => activeUserAdventure.userAdventuresId !== action.payload.userAdventuresId
+                    activeUserAdventure => activeUserAdventure.userAdventureId !== action.payload.userAdventureId
                 )
             }   
         case GET_LIKE_DEVICES:

@@ -12,8 +12,9 @@ const initialState = {
     userAdventure:{
         adventure:{
             device:{
-            
+                
             },
+            imgUrl:[],
             tags:[]
         }
     }

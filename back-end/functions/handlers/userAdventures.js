@@ -52,8 +52,8 @@ exports.getActiveUserAdventures = (req, res) => {
     const activeUserAdventureDocument = db
         .collection('activeUserAdventures')
         .where('userHandle', '==', req.user.userHandle)
-        .where('userAdventuresId', '==', req.params.userAdventureId)
-        .limit(1);
+        .where('active', '==', true)
+        .limit(1)
 
     // ask for device
     const userAdventureDocument = db.doc(`/userAdventures/${req.params.userAdventureId}`); 
@@ -80,7 +80,9 @@ exports.getActiveUserAdventures = (req, res) => {
                     .collection('activeUserAdventures')
                     .add({
                         userAdventureId: req.params.userAdventureId,
-                        userHandle: req.user.userHandle
+                        userHandle: req.user.userHandle,
+                        createdAt: new Date().toISOString(),
+                        active: true
                     })
                     .then(() => {
                         return userAdventureDocument.update({ active: true });
@@ -106,7 +108,8 @@ exports.getInactiveUserAdventures = (req, res) => {
     const activeUserAdventureDocument = db
             .collection('activeUserAdventures')
             .where('userHandle', '==', req.user.userHandle)
-            .where('userAdventuresId', '==', req.params.userAdventureId)
+            .where('userAdventureId', '==', req.params.userAdventureId)
+            .where('active', '==', true)
             .limit(1);
 
     const userAdventuresDocument = db.doc(`/userAdventures/${req.params.userAdventureId}`);
@@ -131,10 +134,10 @@ exports.getInactiveUserAdventures = (req, res) => {
                     .doc(`/activeUserAdventures/${data.docs[0].id}`)
                     .delete()
                     .then(() => {
-                        return userAdventureDocument.update({ active: false });
+                        return userAdventuresDocument.update({ active: false });
                     })
                     .then(() => {
-                        res.json(userAdventureData);
+                        res.json(userAdventuresData);
                     });
             }
         })
