@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 // Components
 import MyButton from '../../../../utilities/MyButton';
-import TitleToDialogUserAdventure from './TitleToDialogUserAdventure';
-import ChekerContentToDialogUserAdventure from './ChekerContentToDialogUserAdventure';
-import ActionsToDialogUserAdventure from './ActionsToDialogUserAdventure';
+// import TitleToDialogUserAdventure from './TitleToDialogUserAdventure';
+// import ChekerContentToDialogUserAdventure from './ChekerContentToDialogUserAdventure';
+//import ActionsToDialogUserAdventure from './ActionsToDialogUserAdventure';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -17,13 +17,12 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 
 // Redux stuff
 import { connect } from 'react-redux';
-import { getUserAdventure } from '../../../../redux/actions/userAdventuresActions';
+import { getDevice } from '../../../../redux/actions/devicesActions';
 
 // styles
 const styles = (theme) => ({
     expandButton: {
-        position: 'absolute',
-        left: '90%'
+        position: 'relative'
     },
     visibleSeparator: {
         width: '100%',
@@ -95,15 +94,15 @@ class DeviceDialog extends Component {
                     TransitionComponent={Transition}
                     scroll="body"
                 >    
-                    <TitleToDialogUserAdventure 
+                    {/* <TitleToDialogUserAdventure 
                         onClose={this.handleClose} 
                         title={title} 
                         nameOfDevice={nameOfDevice}
                         
                     /> 
                     <ChekerContentToDialogUserAdventure/>
-                    {/* dialog actions */}
-                    <ActionsToDialogUserAdventure/>
+                    {/* dialog actions 
+                    <ActionsToDialogUserAdventure/> */}
                 </Dialog>        
             </Fragment>   
         )

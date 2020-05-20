@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import MyButton from '../../util/MyButton';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // Icons
@@ -7,51 +6,48 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 // Redux
 import { connect } from 'react-redux';
-import { likeScream, unlikeScream } from '../../redux/actions/dataActions';
+import { likeDevice, unlikeDevice } from '../../../redux/actions/devicesActions';
 
-class LikeButton extends Component {
+// components
+import MyButton from '../../../utilities/MyButton';
+
+class FavButtonDevice extends Component {
 
     // if the like already exists for the user
-    likedScream = () => {
+    likedDevice = () => {
         if(
             this.props.user.likes && 
             this.props.user.likes.find(
-                    (like) => like.screamId === this.props.screamId
+                    (like) => like.deviceId === this.props.deviceid
                 ) 
         )
             return true;
         else return false;
     };
     // action to add like
-    likeScream = () => {
-        this.props.likeScream(this.props.screamId);
+    likeDevice = () => {
+        this.props.likeDevice(this.props.deviceid);
     };
 
     // action to undo like
-    unlikeScream = () => {
-        this.props.unlikeScream(this.props.screamId);
+    unlikeDevice = () => {
+        this.props.unlikeDevice(this.props.deviceid);
     };
 
     render() {
-        const { authenticated } = this.props.user;
+
         //like button logic to call one of above actions
-        const likeButton = !authenticated ? (
-        <Link to="/login">
-            <MyButton tip="Like">
-                <FavoriteBorder color="primary"/>
-            </MyButton>
-        </Link>
-        ) : (this.likedScream() ? (
-                <MyButton tip="Undo like" onClick={this.unlikeScream}>
+        const likeButtonDevice = (this.likedDevice() ? (
+                <MyButton tip="Undo like" onClick={this.unlikeDevice}>
                     <FavoriteIcon color="primary"/>
                 </MyButton>
                 ) : (
-                <MyButton tip="Like" onClick={this.likeScream}>
+                <MyButton tip="Like" onClick={this.likeDevice}>
                     <FavoriteBorder color="primary"/>
                 </MyButton>
                     )
             );
-            return likeButton;
+            return likeButtonDevice;
             
     }
 }
@@ -61,8 +57,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapActionsToProps = {
-    likeScream,
-    unlikeScream
+    likeDevice,
+    unlikeDevice
 };
 
-export default connect(mapStateToProps,mapActionsToProps)(LikeButton);
+export default connect(mapStateToProps,mapActionsToProps)(FavButtonDevice);

@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 // Componets
 import VideoPlayer from '../../util/VideoPlayer';
 import HeaderToCardDevices from './deviceCard/HeaderToCardDevices';
-// import ContentToCardDevices from './deviceCard/ContentToCardDevices';
-// import ActionsToCardDevices from './deviceCard/ActionsToCardDevices';
+import ContentToCardDevices from './deviceCard/ContentToCardDevices';
+import ActionsToCardDevices from './deviceCard/ActionsToCardDevices';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -55,19 +55,18 @@ export class Device extends Component {
                     price={price}
                 />
                 <VideoPlayer url={videoUrl} widht={100} />
-                {/* <ContentToCardDevices 
-                    createdat={createdAt} 
-                    howmanyadventures={howManyAdventures} 
+                <ContentToCardDevices 
+                    deviceid={deviceId}
                     description={description}
                     nameofdevice={nameOfDevice}
                 />
                 <hr className={classes.visibleSeparator}/>
                 <ActionsToCardDevices 
                     likescount={likesCount} 
-                    commentscount={commentsCount} 
-                    deviceid={deviceId} 
+                    commentscount={commentsCount}  
                     price={price}
-                /> */}
+                    deviceid={deviceId}
+                />
             </Card>     
         )
     } 

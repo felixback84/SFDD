@@ -34,7 +34,7 @@ export default function(state = initialState, action){
             };
         case SET_UNAUTHENTICATED:
             return initialState;
-        case LOADING_USER:
+        case LOADING_USER: 
             return {
                 ...state,
                 loading: true

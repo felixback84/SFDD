@@ -29,3 +29,43 @@ export const getDevices = () => (dispatch) => {
         })
         .catch((err) => console.log(err));
 }
+
+// redux action to get one specific device
+export const getDevice = (deviceid) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    //dispatch({ type: LOADING_USER_DEVICES });
+    axios
+        .get(`/devices/${deviceid}`)
+        .then((res) => { 
+            dispatch({
+                type: GET_DEVICE,
+                payload: res.data
+            });
+            dispatch({ type: STOP_LOADING_UI });
+        })
+        .catch((err) => console.log(err));
+}
+
+// like device
+export const likeDevice = (deviceid) => (dispatch) => {
+    axios.get(`/device/${deviceid}/like`)
+        .then(res => {
+            dispatch({
+                type: GET_LIKE_DEVICES,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}
+
+// unlike device
+export const unlikeDevice = (deviceid) => (dispatch) => {
+    axios.get(`/device/${deviceid}/unlike`)
+        .then(res => {
+            dispatch({
+                type: GET_UNLIKE_DEVICES,
+                payload: res.data
+            })
+        })
+        .catch(err => console.log(err));
+}

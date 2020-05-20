@@ -8,7 +8,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { red } from '@material-ui/core/colors';
 
 // components
-import DeviceDialog from './DeviceDialog';
+import DeviceDialog from '../deviceDialog/DeviceDialog';
 
 const styles = (theme) => ({
     avatar: {
@@ -32,12 +32,12 @@ const HeaderToCardDevices = (props) => {
                         {nameofdevice.charAt(0)}
                     </Avatar>
                 }
-                action={
-                    <DeviceDialog 
-                        labelToSwitch={nameofdevice} 
-                        deviceid={deviceid}
-                    />
-                }
+                // action={
+                //     <DeviceDialog 
+                //         labelToSwitch={nameofdevice} 
+                //         deviceid={deviceid}
+                //     />
+                // }
                 title={
                     <Chip
                         icon={<FaceIcon />}
