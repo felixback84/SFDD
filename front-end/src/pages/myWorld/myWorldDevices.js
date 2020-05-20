@@ -18,7 +18,7 @@ class myWorldDevices extends Component {
         this.props.getUserDevices(); 
         
     }
-
+ 
     render() {
         const { userDevices, loading } = this.props;
         //console.log(userDevices[0]);

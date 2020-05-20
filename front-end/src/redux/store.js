@@ -25,9 +25,9 @@ const reducers = combineReducers({
     userDevices1: userDevicesReducer,
     userAdventures1: userAdventuresReducer,
     dataSets1: dataSetsReducer,
-    checkouts: checkoutsReducer,
-    devices: devicesReducer,
-    adventures: adventuresReducer
+    checkouts1: checkoutsReducer,
+    devices1: devicesReducer,
+    adventures1: adventuresReducer
 });
 
 // creation of store and dev redux tools

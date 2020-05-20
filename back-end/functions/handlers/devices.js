@@ -15,7 +15,7 @@ exports.getAllDevices = (req,res) => {
                     nameOfDevice: doc.data().nameOfDevice,
                     description: doc.data().description,
                     imgUrl: doc.data().imgUrl,
-                    videoUrl: doc.data().vieoUrl,
+                    videoUrl: doc.data().videoUrl,
                     badgeUrl: doc.data().badgeUrl,
                     createdAt: doc.data().createdAt,
                     price: doc.data().price,
