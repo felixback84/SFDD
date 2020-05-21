@@ -19,7 +19,7 @@ class storeDevices extends Component {
     }
 
     render() {
-        const { devices, loading } = this.props;
+        const { devices, loading } = this.props.devices1;
 
         let DevicesMarkup = !loading ? (
             devices.map(device => <Device key={device.deviceId} device={device}/>)
@@ -39,8 +39,7 @@ class storeDevices extends Component {
 }
 
 const mapStateToProps = state => ({
-    devices: state.devices1.devices,
-    loading: state.devices1.loading
+    devices1: state.devices1
 })
 
 export default connect(mapStateToProps, {getDevices})(storeDevices);

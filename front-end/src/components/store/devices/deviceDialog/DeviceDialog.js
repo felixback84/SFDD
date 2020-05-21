@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 // Components
 import MyButton from '../../../../utilities/MyButton';
-// import TitleToDialogUserAdventure from './TitleToDialogUserAdventure';
-// import ChekerContentToDialogUserAdventure from './ChekerContentToDialogUserAdventure';
-//import ActionsToDialogUserAdventure from './ActionsToDialogUserAdventure';
+import TitleToDialogDevice from './TitleToDialogDevice';
+import ChekerContentToDialogDevice from './ChekerContentToDialogDevice';
+// import ActionsToDialogUserAdventure from './ActionsToDialogUserAdventure';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -55,7 +55,7 @@ class DeviceDialog extends Component {
     handleClose = () => {
         this.setState({ open: false });
     } 
-
+ 
     render(){
         // component props and redux props
         const {
@@ -94,13 +94,14 @@ class DeviceDialog extends Component {
                     TransitionComponent={Transition}
                     scroll="body"
                 >    
-                    {/* <TitleToDialogUserAdventure 
+                    <TitleToDialogDevice 
                         onClose={this.handleClose} 
-                        title={title} 
-                        nameOfDevice={nameOfDevice}
+                        price={price} 
+                        nameofdevice={nameOfDevice}
+                        agerate={ageRate}
                         
                     /> 
-                    <ChekerContentToDialogUserAdventure/>
+                    <ChekerContentToDialogDevice/>
                     {/* dialog actions 
                     <ActionsToDialogUserAdventure/> */}
                 </Dialog>        

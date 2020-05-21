@@ -11,7 +11,7 @@
 // initial state
 const initialState = {
     devices: [],
-    device: {},
+    device: {imgUrl:[]},
     loading: false
 };
 

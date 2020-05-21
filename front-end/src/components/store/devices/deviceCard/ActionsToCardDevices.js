@@ -6,7 +6,6 @@ import CardActions from '@material-ui/core/CardActions';
 // components
 import FavButtonDevice from '../FavButtonDevice';
 
-
 const ActionsToCardDevices = (props) => {
     const {
         deviceid,

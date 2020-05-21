@@ -66,10 +66,7 @@ const ContentToDialogUserAdventure = (props) => {
                 </GridList>
             </div> */}
             {/* Content*/}
-            <Grid container spacing={1} direction="row"
-                justify="center"
-                alignItems="center"
-            > 
+            <Grid container spacing={1} direction="row" justify='center' alignItems='center'> 
             {/* Mine since */}
                 <Grid item sm={3} className={classes.gridItems}>
                     <ListItem>
@@ -84,8 +81,8 @@ const ContentToDialogUserAdventure = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
-                <Grid item sm={5} className={classes.gridItems}>
+
+                <Grid item sm={6} className={classes.gridItems}>
                     <ListItem>
                         <ListItemAvatar>
                             <Avatar>
@@ -98,7 +95,7 @@ const ContentToDialogUserAdventure = (props) => {
                         />
                     </ListItem>
                 </Grid>
-                <Divider orientation="vertical" flexItem />
+
                 <Grid item sm={3} className={classes.gridItems}>
                     <ListItem>
                         <ListItemAvatar>

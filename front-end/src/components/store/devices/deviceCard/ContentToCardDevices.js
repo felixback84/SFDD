@@ -68,7 +68,7 @@ const ContentToCardUserAdventure = (props) => {
 
                 <Divider orientation="vertical" flexItem/>
                 
-                <Grid conatainer justify='space-evenly' alignItems="center">
+                <Grid direction='column' justify='flex-start' alignItems='flex-start'>
                     <Grid item xs={6}>
                         <ListItem className={classes.ListItem}>
                             <MyButton 

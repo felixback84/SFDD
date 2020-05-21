@@ -22,7 +22,8 @@ exports.getAllDevices = (req,res) => {
                     ageRate: doc.data().ageRate,
                     likesCount: doc.data().likesCount,
                     commentsCount: doc.data().commentsCount,
-                    howManyAdventures: doc.data().howManyAdventures
+                    howManyAdventures: doc.data().howManyAdventures,
+                    dataSets: doc.data().dataSets
                 });
             });
             return res.json(devices);
@@ -53,29 +54,29 @@ exports.getDevice = (req, res) => {
             data.forEach((doc) => {
                 deviceData.comments.push(doc.data());
             });
-            // return res.json(deviceData);
-        })
-    // ask for likes    
-    db
-        .doc(`/devices/${req.params.deviceId}`)
-        .get()
-        .then((doc) => {
-            deviceData = doc.data();
-            deviceData.deviceId = doc.id;
-            return db
-                    .collection('likes')
-                    //.orderBy('createdAt', 'desc')
-                    .where('deviceId', '==', req.params.deviceId)
-                    .get();
-        })
-        .then((data) => {
-            deviceData.likes = [];
-            data.forEach((doc) => {
-                deviceData.likes.push(doc.data());
-            })
-            // all res of server
             return res.json(deviceData);
         })
+    // ask for likes    
+    // db
+    //     .doc(`/devices/${req.params.deviceId}`)
+    //     .get()
+    //     .then((doc) => {
+    //         deviceData = doc.data();
+    //         deviceData.deviceId = doc.id;
+    //         return db
+    //                 .collection('likes')
+    //                 //.orderBy('createdAt', 'desc')
+    //                 .where('deviceId', '==', req.params.deviceId)
+    //                 .get();
+    //     })
+    //     .then((data) => {
+    //         deviceData.likes = [];
+    //         data.forEach((doc) => {
+    //             deviceData.likes.push(doc.data());
+    //         })
+    //         // all res of server
+    //         return res.json(deviceData);
+    //     })
         .catch((err) => {
             console.error(err);
             res.status(500).json({ error: err.code });

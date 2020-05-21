@@ -48,7 +48,6 @@ class FavButtonDevice extends Component {
                     )
             );
             return likeButtonDevice;
-            
     }
 }
 

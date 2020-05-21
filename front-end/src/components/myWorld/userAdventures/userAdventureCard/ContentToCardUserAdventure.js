@@ -36,7 +36,7 @@ const ContentToCardUserAdventure = (props) => {
 
     return (
         <CardContent>
-            <Grid container justify="space-evenly" alignItems="center" direction="row" >
+            <Grid container spacing={1} direction="row" justify='center' alignItems='center'>
                 <Grid item xs={3}>
                     <ListItem className={classes.ListItem}>
                         <ListItemAvatar >
@@ -94,7 +94,7 @@ const ContentToCardUserAdventure = (props) => {
                 </Grid>
             </Grid>
             <hr className={classes.visibleSeparator}/>
-            <Grid container spacing={1} alignItems="center">
+            <Grid container spacing={1} direction="row" justify='center' alignItems='center'>
                 <Grid item xs={12}>
                         <ListItem className={classes.ListItem}>
                             <ListItemAvatar >
