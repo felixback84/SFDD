@@ -5,8 +5,11 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 import Typography from '@material-ui/core/Typography';
+
+// icons
+import FaceIcon from '@material-ui/icons/Face';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -20,43 +23,44 @@ const styles = (theme) => ({
     },
 });
 
-function CarrouselOfAdventuresCardsForDevice(props) {
+function CardOfAdventuresForDevice(props) {
     
-    const {classes, adventures} = props;
+    const {
+        classes, 
+        adventure:{
+            title,
+            coverUrl,
+            description,
+            price
+        }
+    } = props;
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
+                    component="img"
+                    height="340"
+                    image={coverUrl}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Lizard
+                        {title}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                        across all continents except Antarctica
+                        {description}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                    Share
-                </Button>
-                <Button size="small" color="primary">
-                    Learn More
-                </Button>
+                <Chip
+                    icon={<FaceIcon />}
+                    label={price + 'USD'}
+                />
             </CardActions>
         </Card>
     );
 }
 
-const mapStateToProps = (state) => ({
-    adventures: state.adventures1.adventures
-    
-})
-
-export default connect(mapStateToProps)(withStyles(styles)(CarrouselOfAdventuresCardsForDevice));
+export default (withStyles(styles)(CardOfAdventuresForDevice));

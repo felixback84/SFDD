@@ -18,6 +18,7 @@ import UnfoldMore from '@material-ui/icons/UnfoldMore';
 // Redux stuff
 import { connect } from 'react-redux';
 import { getDevice } from '../../../../redux/actions/devicesActions';
+import { getAdventures } from '../../../../redux/actions/adventuresActions';
 
 // styles
 const styles = (theme) => ({
@@ -50,6 +51,7 @@ class DeviceDialog extends Component {
         this.setState({ open: true });
         // redux actions
         this.props.getDevice(this.props.deviceid);
+        this.props.getAdventures();
     }
 
     handleClose = () => {
@@ -101,7 +103,7 @@ class DeviceDialog extends Component {
                         agerate={ageRate}
                         
                     /> 
-                    <ChekerContentToDialogDevice/>
+                    <ChekerContentToDialogDevice nameofdevice={nameOfDevice}/>
                     {/* dialog actions 
                     <ActionsToDialogUserAdventure/> */}
                 </Dialog>        
@@ -117,7 +119,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapActionsToProps = {
-    getDevice
+    getDevice,
+    getAdventures
 };
 
 export default connect(mapStateToProps,mapActionsToProps)(withStyles(styles)(DeviceDialog));

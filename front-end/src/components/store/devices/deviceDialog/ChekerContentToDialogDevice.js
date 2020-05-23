@@ -6,7 +6,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 // components
 import ContentToDialogDevice from './ContentToDialogDevice';
 import CarrouselOfImagesDevice from './CarrouselOfImagesDevice';
-import CarrouselOfAdventuresCardsForDevice from './CarrouselOfAdventuresCardsForDevice';
+import CardOfAdventuresForDevice from './CardOfAdventuresForDevice';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -14,8 +14,13 @@ import { connect } from 'react-redux';
 class ChekerContentToDialogUserAdventure extends Component {
     render(){
         const {
-            loading
+            loading,
+            nameofdevice,
+            adventures
         } = this.props;
+
+        let adventuresMarkup = adventures.map(adventure => 
+            <CardOfAdventuresForDevice key={adventure.adventureId} adventure={adventure}/>)
 
         return(
             loading ? (
@@ -28,7 +33,7 @@ class ChekerContentToDialogUserAdventure extends Component {
                     >   
                         <CarrouselOfImagesDevice />
                         <ContentToDialogDevice />
-                        <CarrouselOfAdventuresCardsForDevice adventures={adventures}/>
+                        {adventuresMarkup}
                     </Grid>
                 )
         )
@@ -36,7 +41,8 @@ class ChekerContentToDialogUserAdventure extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    loading: state.devices1.loading
+    loading: state.devices1.loading,
+    adventures:state.adventures1.adventures
     
 })
 

@@ -27,7 +27,8 @@ exports.getAllAdventures = (req,res) => {
                     device: {
                         nameOfDevice: doc.data().device.nameOfDevice,
                         badgeUrl: doc.data().device.badgeUrl
-                    }
+                    },
+                    coverUrl: doc.data().coverUrl
                 });
             });
             return res.json(adventures);

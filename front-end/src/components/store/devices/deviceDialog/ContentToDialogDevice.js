@@ -125,8 +125,7 @@ const ContentToDialogDevice = (props) => {
                         </ListItem>
                     </Grid>
                 </Grid>
-                
-                <hr className={classes.visibleSeparator}/>
+
             </Grid>
         </DialogContent>
     )
