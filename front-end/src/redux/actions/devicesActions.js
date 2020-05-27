@@ -7,7 +7,9 @@ import {
     GET_DEVICE, 
     GET_LIKE_DEVICES, 
     GET_UNLIKE_DEVICES, 
-    POST_DEVICE_COMMENT 
+    POST_DEVICE_COMMENT,
+    SET_ERRORS,
+    CLEAR_ERRORS 
 } from '../types';
 
 // axios
@@ -68,4 +70,27 @@ export const unlikeDevice = (deviceid) => (dispatch) => {
             })
         })
         .catch(err => console.log(err));
+}
+
+// submit comment
+export const postCommentDevice = (deviceid, commentData) => (dispatch) => {
+    axios.post(`/device/${deviceid}/comment`, commentData)
+        .then(res => {
+            dispatch({
+                type: POST_DEVICE_COMMENT,
+                payload: res.data
+            });
+            dispatch(clearErrors());
+        })
+        .catch((err) => {
+            dispatch({
+                type: SET_ERRORS,
+                payload: err.response.data
+            });
+        });
+}
+
+// clear errors
+export const clearErrors = () => (dispatch) => {
+    dispatch({ type: CLEAR_ERRORS });
 }

@@ -56,7 +56,7 @@ function CardOfAdventuresForDevice(props) {
             <CardActions>
                 <Chip
                     icon={<FaceIcon />}
-                    label={price + 'USD'}
+                    label={price + ' USD'}
                 />
             </CardActions>
         </Card>

@@ -11,7 +11,7 @@
 // initial state
 const initialState = {
     devices: [],
-    device: {imgUrl:[]},
+    device: {imgUrl:[], comments:[]},
     loading: false
 };
 
@@ -36,15 +36,18 @@ export default function(state = initialState, action){
             }       
         case GET_LIKE_DEVICES:
         case GET_UNLIKE_DEVICES:
+            let commentsStill = state.device.comments;
             let index = state.devices.findIndex(
                 (device) => device.deviceId === action.payload.deviceId
             );
             state.devices[index] = action.payload;
             if (state.device.deviceId === action.payload.deviceId) {
                 state.device = action.payload;
+                state.device.comments = commentsStill;
+                
             }
             return {
-                ...state
+                ...state,
             }; 
         case POST_DEVICE_COMMENT:
             return {

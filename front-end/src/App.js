@@ -29,6 +29,7 @@ import AuthRoute from './utilities/AuthRoute';
 
 // jwt 
 import jwtDecode from 'jwt-decode';
+
 // Redux
 import { Provider } from 'react-redux';
 import store from './redux/store';

@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import MyButton from '../../../../utilities/MyButton';
 import TitleToDialogDevice from './TitleToDialogDevice';
 import ChekerContentToDialogDevice from './ChekerContentToDialogDevice';
-// import ActionsToDialogUserAdventure from './ActionsToDialogUserAdventure';
+import ActionsToDialogDevice from './ActionsToDialogDevice';
+import CommentsToDialogDevice from './CommentsToDialogDevice';
+import CommentFormToDialogDevice from './CommentFormToDialogDevice';
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -73,9 +75,9 @@ class DeviceDialog extends Component {
                 likesCount,
                 createdAt,
                 commentsCount,
-                badgeUrl
-            },
-            ui: { loading }
+                badgeUrl,
+                comments
+            }
         } = this.props;
 
         return(
@@ -104,8 +106,11 @@ class DeviceDialog extends Component {
                         
                     /> 
                     <ChekerContentToDialogDevice nameofdevice={nameOfDevice}/>
-                    {/* dialog actions 
-                    <ActionsToDialogUserAdventure/> */}
+                    {/* dialog actions*/}
+                    <ActionsToDialogDevice deviceid={deviceId}/> 
+                    {/* {commentsDevice} */}
+                    <CommentsToDialogDevice/>
+                    <CommentFormToDialogDevice deviceid={deviceId} />
                 </Dialog>        
             </Fragment>   
         )
@@ -113,9 +118,9 @@ class DeviceDialog extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    loading: state.devices1.loading,
-    device: state.devices1.device,
-    ui: state.ui
+    
+    device: state.devices1.device
+
 })
 
 const mapActionsToProps = {

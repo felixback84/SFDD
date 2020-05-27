@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // mui stuff
 import withStyles from '@material-ui/core/styles/withStyles';
 import CardContent from '@material-ui/core/CardContent';
@@ -14,6 +15,7 @@ import Divider from '@material-ui/core/Divider';
 // components
 import MyButton from '../../../../utilities/MyButton';
 import DeviceDialog from '../deviceDialog/DeviceDialog';
+import PaymentProcess from '../deviceStore/PaymentProcess';
 
 // dayjs
 import dayjs from 'dayjs';
@@ -38,6 +40,12 @@ const styles = (theme) => ({
 
 const ContentToCardUserAdventure = (props) => {
     dayjs.extend(relativeTime);
+
+    // get device data
+    // const handleClick = (deviceid) => {
+    //     getDevice(props.deviceid);
+    // }
+
     const {
         classes,
         deviceid,
@@ -71,12 +79,7 @@ const ContentToCardUserAdventure = (props) => {
                 <Grid direction='column' justify='flex-start' alignItems='flex-start'>
                     <Grid item xs={6}>
                         <ListItem className={classes.ListItem}>
-                            <MyButton 
-                            tip={`Buy ${nameofdevice}`} 
-                            tipClassName={classes.buyButton}
-                            >
-                                <StorefrontIcon color="primary"/>
-                            </MyButton>
+                            <PaymentProcess deviceid={deviceid}/>
                         </ListItem>
                     </Grid>
                     
