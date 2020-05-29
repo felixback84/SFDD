@@ -59,6 +59,8 @@ export class Device extends Component {
                     deviceid={deviceId}
                     description={description}
                     nameofdevice={nameOfDevice}
+                    agerate={ageRate}
+                    price={price}
                 />
                 <hr className={classes.visibleSeparator}/>
                 <ActionsToCardDevices 

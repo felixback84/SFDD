@@ -15,7 +15,7 @@ import Divider from '@material-ui/core/Divider';
 // components
 import MyButton from '../../../../utilities/MyButton';
 import DeviceDialog from '../deviceDialog/DeviceDialog';
-import PaymentProcess from '../deviceStore/PaymentProcess';
+import ProcessToDevicePayment from '../deviceStore/ProcessToDevicePayment';
 
 // dayjs
 import dayjs from 'dayjs';
@@ -41,11 +41,6 @@ const styles = (theme) => ({
 const ContentToCardUserAdventure = (props) => {
     dayjs.extend(relativeTime);
 
-    // get device data
-    // const handleClick = (deviceid) => {
-    //     getDevice(props.deviceid);
-    // }
-
     const {
         classes,
         deviceid,
@@ -54,7 +49,9 @@ const ContentToCardUserAdventure = (props) => {
         title,
         description,
         duration,
-        language
+        language,
+        agerate,
+        price
     } = props;
 
     return (
@@ -79,7 +76,12 @@ const ContentToCardUserAdventure = (props) => {
                 <Grid direction='column' justify='flex-start' alignItems='flex-start'>
                     <Grid item xs={6}>
                         <ListItem className={classes.ListItem}>
-                            <PaymentProcess deviceid={deviceid}/>
+                            <ProcessToDevicePayment 
+                                deviceid={deviceid} 
+                                nameofdevice={nameofdevice}
+                                agerate={agerate}
+                                price={price}
+                            />
                         </ListItem>
                     </Grid>
                     

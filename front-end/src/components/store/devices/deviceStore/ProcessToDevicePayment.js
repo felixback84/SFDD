@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 // MUI Stuff
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -6,10 +6,12 @@ import Dialog from '@material-ui/core/Dialog';
 import Slide from '@material-ui/core/Slide';
 
 // Icons
-import StorefrontIcon from '@material-ui/icons/StorefrontIcon';
+import StorefrontIcon from '@material-ui/icons/Storefront';
 
 // components
-import StepperPayment from './StepperPayment';
+import MyButton from '../../../../utilities/MyButton';
+import StepperToDevicePayment from './StepperToDevicePayment';
+import TitleToDevicePayment from './TitleToDevicePayment';
 
 // Redux stuff
 import { connect } from 'react-redux';
@@ -35,7 +37,7 @@ const Transition = React.forwardRef(function Transition(props,ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
 
-class PaymentProcess extends Component {
+class ProcessToDevicePayment extends Component {
     
     state = {
         open: false
@@ -53,12 +55,17 @@ class PaymentProcess extends Component {
     } 
     
     render() {
+
+        // props for show data components
+        const {classes, nameofdevice, agerate, price} = this.props;
+
         return (
             <Fragment>
                 {/* Open button */}
                 <MyButton 
                     tip={`Buy ${nameofdevice}`} 
                     tipClassName={classes.buyButton}
+                    onClick={this.handleOpen}
                 >
                     <StorefrontIcon 
                         color="primary" 
@@ -73,7 +80,13 @@ class PaymentProcess extends Component {
                     TransitionComponent={Transition}
                     scroll="body"
                 >    
-                    <StepperPayment />
+                    <TitleToDevicePayment 
+                        onClose={this.handleClose} 
+                        price={price} 
+                        nameofdevice={nameofdevice} 
+                        agerate={agerate}
+                    />
+                    <StepperToDevicePayment />
                 </Dialog>        
             </Fragment>   
         )
@@ -82,13 +95,13 @@ class PaymentProcess extends Component {
 
 const mapStateToProps = (state) => ({
     device: state.devices1.device
-
 })
 
 const mapActionsToProps = {
     getDevice
 };
 
-export default connect(mapStateToProps,mapActionsToProps)(PaymentProcess);
+export default connect(mapStateToProps,mapActionsToProps)(withStyles(styles)(ProcessToDevicePayment));
+
 
 
